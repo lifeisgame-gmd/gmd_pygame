@@ -25,7 +25,6 @@ def update():
     pass
 
 def draw(screen):
-    # 버튼들을 그립니다.
     screen.blit(background, (0, 0))
     start_button.draw(screen)
     screen.blit(logo, (710, 50))
