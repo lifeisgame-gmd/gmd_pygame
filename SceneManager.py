@@ -27,6 +27,9 @@ class SceneManager:
             for event in pygame.event.get(): # 이벤트가 작동되었다면
                 if event.type == pygame.QUIT: # 이벤트가 종료 이벤트라면
                     running = False # 실행을 중지합니다. 이러면 whlie문이 더 이상 작동하지 않으니 파일 끝으로 가겠죠?
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        running = False
                 self.scene_module.handle_event(event) # 이벤트가 작동되었다면, 현재 불러와진 씬 모듈의 handle_event 메소드를 실행합니다.
             self.scene_module.update() # 현재 불러와진 씬 모듈의 update 메소드를 실행합니다.
             self.screen.fill((0, 0, 0)) # draw 메소드를 실행하기 전에, 화면을 검은색으로 채워주네요.
