@@ -9,12 +9,12 @@ def setup(scene_manager):
 
     manager = scene_manager
 
-    background = pygame.image.load("assets/background.jpeg")
+    background = pygame.image.load("assets/start/background.jpeg")
     background = pygame.transform.scale(background, (1920, 1080))
-    logo = pygame.image.load("assets/logo.png")
+    logo = pygame.image.load("assets/start/logo.png")
     logo = pygame.transform.scale(logo, (500, 500))
 
-    button_image = pygame.image.load("assets/Buttons.png").subsurface((0, 32, 96, 32))
+    button_image = pygame.image.load("assets/UI/Buttons.png").subsurface((0, 32, 96, 32))
     start_button = Button(button_image, on_click=lambda: manager.change_scene('town'), x=960, y=540)
 
 def handle_event(event):
