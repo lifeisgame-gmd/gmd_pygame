@@ -15,7 +15,7 @@ class SceneManager:
         if self.scene_module: # 이미 불러와진 씬이 있다면?
             self.scene_module.cleanup() # 그 씬에서 정리 메소드를 실행합니다.
         self.current_scene = scene_name # SceneManager의 current_scene 변수에다가 메소드의 입력값을 넣어 주네요.
-        self.scene_module = importlib.import_module(f'scene_{scene_name}') # 파일에서 새로운 씬을 불러옵니다.
+        self.scene_module = importlib.import_module(f'scenes.scene_{scene_name}') # 파일에서 새로운 씬을 불러옵니다.
         self.scene_module.setup(self) # 불러온 씬의 셋업 메소드를 실행합니다.
 
     def run(self):
