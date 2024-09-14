@@ -5,7 +5,7 @@ class SceneManager:
 
     # __init__은 SceneManager 객체가 생성될 때 실행되는 코드입니다. SceneManager 객체는 main.py에서 생성되고 다시 생성될 일은 없습니다.
     def __init__(self, screen):
-        self.current_scene = 'fight' # 시작 scene을 'start'로 정했으니, scene_start를 실행하겠다는 의미겠네요.
+        self.current_scene = 'start' # 시작 scene을 'start'로 정했으니, scene_start를 실행하겠다는 의미겠네요.
         self.scene_module = None # scene_module은 load_scene에서 불러올 scene 파일입니다. 여기에서는 scene_start.py를 불러와서 저장하겠네요. 아직 없으니 None로 선언만 해줍니다.
         self.screen = screen # Screen은 main.py에서 선언한 screen을 가져옵니다.
         self.change_scene(self.current_scene) # load_scene 메소드에 'start'를 넣어 줬습니다.
