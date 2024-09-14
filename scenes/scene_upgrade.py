@@ -1,5 +1,4 @@
-import pygame
-from Util import Image
+from util.Util import Image
 
 """
 Example Scene
