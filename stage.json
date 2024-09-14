@@ -1,0 +1,12 @@
+{
+  "map": "TEETEETEETEET",
+  "Stage": [
+    {},
+    {
+      "Enemies": [{
+        "id": "slime",
+        "lvl": 1
+      }]
+    }
+  ]
+}
