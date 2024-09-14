@@ -1,0 +1,2 @@
+class PlayerData:
+    pass
