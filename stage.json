@@ -1,9 +1,9 @@
 {
   "map": "TEETEETEETEET",
-  "Stage": [
+  "stage": [
     {},
     {
-      "Enemies": [{
+      "enemies": [{
         "id": "slime",
         "lvl": 1
       }]
