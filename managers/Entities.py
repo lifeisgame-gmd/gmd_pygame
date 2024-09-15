@@ -1,4 +1,5 @@
 from abc import abstractmethod
+
 from source.conf import project
 from util.Util import Image
 
@@ -44,4 +45,9 @@ class Monster(Entity):
 
 class Player(Entity):
     skills = []
+    def load_image(self):
+        super().load_image()
+        for i in range(len(self.skills)):
+            self.skills[i].image = Image(self.skills[i].src)
+            print(self.skills[i].src)
     pass

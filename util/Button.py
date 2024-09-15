@@ -22,5 +22,9 @@ class Button:
         if self.rect.collidepoint(pos):
             if self.on_click:
                 self.on_click()
+            return True
+        return False
+
+
 
 # asdf asdf asdf 

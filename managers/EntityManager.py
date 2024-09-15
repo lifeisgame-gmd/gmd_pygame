@@ -13,7 +13,9 @@ class MonsterManager:
 
     @staticmethod
     def get(name: str, lvl: int) -> Monster:
-        return copy.deepcopy(MonsterManager.arr[name]).lvl_up(lvl-1)
+        copied = copy.deepcopy(MonsterManager.arr[name]).lvl_up(lvl-1)
+        copied.load_image()
+        return copied
 
 class PlayerManager:
     arr: dict[str, Player] = {}

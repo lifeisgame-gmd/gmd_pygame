@@ -12,5 +12,5 @@ class Skill:
         self.id = sk_id
         self.need_data = need_data
 
-    def activate(self, fight_data: FightData, additional_data: Dict[str, Any]):
+    def activate(self, fight_data, additional_data: Dict[str, Any]):
         self.on_enable(fight_data, additional_data)
