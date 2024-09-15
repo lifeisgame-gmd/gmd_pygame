@@ -1,7 +1,5 @@
 import copy
-
 import pygame
-from pygame.examples.cursors import image
 from util.Button import Button
 
 
@@ -22,6 +20,11 @@ class Image:
     def subsurface(self, x, y, width, height):
         temp_image = copy.copy(self)
         temp_image.image = temp_image.image.subsurface((x, y, width, height))
+        return temp_image
+
+    def flip(self, x: bool, y: bool):
+        temp_image = copy.copy(self)
+        temp_image.image = pygame.transform.flip(temp_image.image, x, y)
         return temp_image
 
     def button(self, x, y, on_click, is_center=False) -> Button:
