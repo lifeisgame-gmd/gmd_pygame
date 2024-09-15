@@ -1,5 +1,8 @@
 import pygame
 from util.Button import Button
+from util.FightData import FightData
+from util.PlayerData import PlayerData
+
 
 def setup(scene_manager):
     global manager
@@ -16,6 +19,7 @@ def setup(scene_manager):
 
     button_image = pygame.image.load("assets/UI/buttons.png").subsurface((0, 32, 96, 32))
     start_button = Button(button_image, on_click=lambda: manager.change_scene('town'), x=960, y=540, is_center=True)
+
 
 def handle_event(event):
     if event.type == pygame.MOUSEBUTTONDOWN:

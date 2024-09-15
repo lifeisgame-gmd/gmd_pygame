@@ -1,6 +1,8 @@
 import pygame
 
 from managers import EntityManager
+from managers.Entities import Monster
+from managers.EntityManager import MonsterManager
 from managers.MapManager import MapManager
 from util.Util import Image
 
@@ -31,8 +33,6 @@ def setup(scene_manager):
     hotel = Image("assets/town/hotel.png").scale(300, 500).button(1050, 650, lambda: manager.change_scene('hotel'), is_center=True) #여관 / 치료소
     to_map = Image("assets/town/map.png").scale(300, 300).button(1620, 200, lambda: map_func(), is_center=True)
 
-    EntityManager.init()
-    EntityManager.get('slime', 5)
 
 
     
