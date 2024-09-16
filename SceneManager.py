@@ -33,6 +33,12 @@ class SceneManager:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE: # ESC 키에도 게임 종료를 넣어 주었습니다.
                         running = False
+                if event.type == pygame.MOUSEMOTION:
+                    mouse_x, mouse_y = event.pos
+                    scale_x = self.virtual_screen.get_width() / self.screen.get_width()
+                    scale_y = self.virtual_screen.get_height() / self.screen.get_height()
+                    virtual_mouse_pos = (mouse_x * scale_x, mouse_y * scale_y)
+                    event.pos = virtual_mouse_pos
                 self.scene_module.handle_event(event) # 이벤트가 작동되었다면, 현재 불러와진 씬 모듈의 handle_event 메소드를 실행합니다.
             self.scene_module.update() # 현재 불러와진 씬 모듈의 update 메소드를 실행합니다.
             self.screen.fill((0, 0, 0)) # draw 메소드를 실행하기 전에, 화면을 검은색으로 채워주네요.

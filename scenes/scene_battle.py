@@ -108,6 +108,8 @@ def next_turn():
 
 # 씬이 불러와진 상태일 때, 이벤트가 작동할 시 실행되는 메소드입니다.
 def handle_event(event):
+    if event.type == pygame.MOUSEMOTION:
+        mouse_pos = event.pos
     global state, selected_unit, target, mouse_pos
     if event.type == pygame.MOUSEBUTTONDOWN:
         clicked = False
@@ -196,7 +198,6 @@ def click_sk(i: int):
 # 씬이 불러와진 상태일 때, 각 프레임마다 실행되는 메소드입니다.
 def update():
     global mouse_pos, state, log_output
-    mouse_pos = pygame.mouse.get_pos()
     for i in range(len(fight_data.enemy)):
         if fight_data.enemy[i] is None:
             continue
