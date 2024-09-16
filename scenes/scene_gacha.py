@@ -47,7 +47,9 @@ def draw(screen):
     screen.blit(background,(0,0))
     back_button.draw(screen)
     screen.blit(greeting_text,(0,0))
-    pygame.draw.rect(screen, (255,255,255),[10, 150, 500, 800])
+    pygame.draw.rect(screen, (255,255,255),[10, 150, 500, 800]) #사각형 그리기 / 설명창
+    pygame.draw.ellipse(screen, (0,0,255),[760,500,500,300]) #타원 그리기 / 대충 몬스터 그려봄 ㅇㅇ.
+    pygame.draw.rect(screen, (255,255,255),[1450, 10, 450, 100]) #돈/ 재화 띄우는 곳
     pass
 
 # 다른 씬으로 넘어갈 때 실행되는 메소드입니다.
