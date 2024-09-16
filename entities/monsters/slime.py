@@ -10,5 +10,8 @@ class Slime(Monster):
     def action(self, fight_data: FightData):
 
         target = next((item for item in reversed(fight_data.ally) if item is not None), None)
+        # if fight_data.ally is all None, return.
+        if all(item is None for item in fight_data.ally):
+            return ""
         target.damage(self.atk)
         return target.name + "을(를) " + str(self.atk) + "의 데미지로 공격했다!"
