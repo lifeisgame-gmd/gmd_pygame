@@ -113,7 +113,7 @@ def handle_event(event):
     if event.type == pygame.MOUSEBUTTONDOWN:
         clicked = False
         clicked = check_click_obj_iter(clicked, event)
-        if state is State.PlayerSelected and isinstance(selected_unit, Player):
+        if (state is State.PlayerSelected or state is State.SkillSelected) and isinstance(selected_unit, Player):
             for i in selected_unit.skills:
                 ret = i.button.check_click(event.pos)
                 if ret:
@@ -184,7 +184,6 @@ def add_log(result):
     global log
     if log is None:
         log = ""
-    print(result)
     log += "\n" + result
 
 
