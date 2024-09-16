@@ -1,9 +1,14 @@
 import importlib
+from typing import Optional
+
 import pygame
 from pygame import Surface
 
+from Interfaces.interface import Interface
+
 
 class SceneManager:
+    ui: Optional[Interface] = None
 
     # __init__은 SceneManager 객체가 생성될 때 실행되는 코드입니다. SceneManager 객체는 main.py에서 생성되고 다시 생성될 일은 없습니다.
     def __init__(self, screen: Surface, virtual_screen: Surface):
@@ -39,11 +44,17 @@ class SceneManager:
                     scale_y = self.virtual_screen.get_height() / self.screen.get_height()
                     virtual_mouse_pos = (mouse_x * scale_x, mouse_y * scale_y)
                     event.pos = virtual_mouse_pos
-                self.scene_module.handle_event(event) # 이벤트가 작동되었다면, 현재 불러와진 씬 모듈의 handle_event 메소드를 실행합니다.
+                if SceneManager.ui is None:
+                    self.scene_module.handle_event(event) # 이벤트가 작동되었다면, 현재 불러와진 씬 모듈의 handle_event 메소드를 실행합니다.
+                else:
+                    SceneManager.ui.handle_event(event)
             self.scene_module.update() # 현재 불러와진 씬 모듈의 update 메소드를 실행합니다.
             self.screen.fill((0, 0, 0)) # draw 메소드를 실행하기 전에, 화면을 검은색으로 채워주네요.
             self.scene_module.draw(self.virtual_screen) # 현재 불러와진 씬 모듈의 draw 메소드를 실행합니다. 출력할 screen을 매개변수로 주었네요.
+            if SceneManager.ui is not None:
+                SceneManager.ui.draw(self.virtual_screen)
             scaled_screen = pygame.transform.scale(self.virtual_screen, self.screen.get_size())
             self.screen.blit(scaled_screen, (0, 0))
             pygame.display.flip() # draw 메소드를 진행하고 나서, 불러온 그래픽을 반영합니다.
             clock.tick(fps) # 1/fps 시간 동안 기다립니다. 20 fps라면, 0.05초 기다리겠네요.
+

@@ -2,6 +2,7 @@ import pygame
 
 from SceneManager import SceneManager
 from managers.EntityManager import PlayerManager, MonsterManager
+from managers.InterfaceManager import UIManager
 from managers.MapManager import MapManager
 from util.PlayerData import PlayerData
 
@@ -14,6 +15,7 @@ def setup(scene_manager: SceneManager):
     PlayerManager.init()
     MonsterManager.init()
     MapManager.init()
+    UIManager.init(scene_manager)
 
     PlayerData.debug_init()
 
