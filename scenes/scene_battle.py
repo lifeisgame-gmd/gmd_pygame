@@ -108,9 +108,9 @@ def next_turn():
 
 # 씬이 불러와진 상태일 때, 이벤트가 작동할 시 실행되는 메소드입니다.
 def handle_event(event):
+    global state, selected_unit, target, mouse_pos
     if event.type == pygame.MOUSEMOTION:
         mouse_pos = event.pos
-    global state, selected_unit, target, mouse_pos
     if event.type == pygame.MOUSEBUTTONDOWN:
         clicked = False
         clicked = check_click_obj_iter(clicked, event)
