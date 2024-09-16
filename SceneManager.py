@@ -33,7 +33,7 @@ class SceneManager:
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_ESCAPE: # ESC 키에도 게임 종료를 넣어 주었습니다.
                         running = False
-                if event.type == pygame.MOUSEMOTION:
+                if event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.MOUSEMOTION:
                     mouse_x, mouse_y = event.pos
                     scale_x = self.virtual_screen.get_width() / self.screen.get_width()
                     scale_y = self.virtual_screen.get_height() / self.screen.get_height()
