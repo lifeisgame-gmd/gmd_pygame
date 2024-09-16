@@ -28,6 +28,7 @@ def setup(scene_manager: SceneManager):
     battle_tile = Image("assets/map/map_battle.png").scale(tile_size, tile_size)
     indicator = Image("assets/map/map_indicator.png").scale(tile_size, tile_size)
     go_button = Image("assets/UI/buttons.png").to_tile_set_by_count(2, 2)[0][0].scale(192, 64).button(960, 700, on_click=lambda: move(), is_center=True)
+    #is_center는 버튼 중심점을 왼쪽위로 할지(false) 아니면 이미지 정 중앙(true)으로 할지.
     #back_button = Image("assets/UI/back.png").scale(100, 100).button(100, 100, on_click=lambda: managers.change_scene("town"), is_center=True)
 
 def move():
