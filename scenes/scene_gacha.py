@@ -18,6 +18,7 @@ def setup(scene_manager):
     global recruitment_button
     global back_button
     global greeting_text
+    global Hero_Description
 
     manager = scene_manager
     background = pygame.image.load("assets/gacha/gacha_background.png") #배경
@@ -25,6 +26,7 @@ def setup(scene_manager):
     Button_image = pygame.image.load("assets/button.png")
     Button_image = pygame.transform.scale(Button_image, (300, 100))
     back_button = Button(Button_image, on_click=lambda: manager.change_scene('town'), x=1750, y=1010, is_center=True)
+    Hero_Description = pygame.Rect(0, 0, 300, 1500)
 
     #폰트 / 글자
     game_font = pygame.font.Font(r"assets\font\빛의 계승자 Regular\HeirofLightRegular.ttf", 100)
@@ -45,6 +47,7 @@ def draw(screen):
     screen.blit(background,(0,0))
     back_button.draw(screen)
     screen.blit(greeting_text,(0,0))
+    pygame.draw.rect(screen, (255,255,255),[10, 150, 500, 800])
     pass
 
 # 다른 씬으로 넘어갈 때 실행되는 메소드입니다.
