@@ -12,20 +12,22 @@ class Entity:
         :rtype: object
         """
         self.atk = 0
-        self.hp = 0
         self.name = name
         self.src = src
-        self.hp_o = hp
+        self.hp_o = hp # original. 레벨업 당 계수
+        self.hp_c = hp # current. 현재 체력
+        self.hp_m = hp # max. 최대 체력
         self.atk_o = atk
         self.protect = 0
         self.lvl = lvl
 
     def damage(self, atk):
-        self.hp = self.hp_o - max(atk - project, 0)
+        self.hp_c -= max(atk - self.protect, 0)
 
     def lvl_up(self, lvl: int):
         self.lvl += lvl
-        self.hp = self.hp_o * self.lvl
+        self.hp_c += self.hp_o * self.lvl - self.hp_m
+        self.hp_m = self.hp_o * self.lvl
         self.atk = self.atk_o * self.lvl
         return self
 
@@ -49,5 +51,4 @@ class Player(Entity):
         super().load_image()
         for i in range(len(self.skills)):
             self.skills[i].image = Image(self.skills[i].src)
-            print(self.skills[i].src)
     pass

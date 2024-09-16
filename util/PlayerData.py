@@ -14,5 +14,4 @@ class PlayerData:
         PlayerData.player_have['cat'] = PlayerManager.get('cat', 1)
         PlayerData.party[0] = PlayerManager.get('cat', 1)
         PlayerData.party[1] = PlayerManager.get('cat', 1)
-        PlayerData.party[2] = PlayerManager.get('cat', 1)
         PlayerData.party[3] = PlayerManager.get('cat', 1)

@@ -9,7 +9,7 @@ class MonsterManager:
     arr: dict[str, Monster] = {}
     @staticmethod
     def init():
-        MonsterManager.arr['slime'] = Slime("슬라임", "assets/monster/slime.png", 10, 1)
+        MonsterManager.arr['slime'] = Slime()
 
     @staticmethod
     def get(name: str, lvl: int) -> Monster:
@@ -22,7 +22,7 @@ class PlayerManager:
 
     @staticmethod
     def init():
-        PlayerManager.arr['cat'] = Cat('cat',"assets/player/cat.png", 10, 1, 1)
+        PlayerManager.arr['cat'] = Cat()
 
     @staticmethod
     def get(name: str, lvl: int) -> Player:
