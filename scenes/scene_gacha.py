@@ -1,5 +1,11 @@
 import pygame
 
+from SceneManager import SceneManager
+from managers.EntityManager import PlayerManager, MonsterManager
+from managers.MapManager import MapManager
+from util.PlayerData import PlayerData
+from util.Button import Button
+
 """
 Example Scene
 """
@@ -16,7 +22,7 @@ def setup(scene_manager):
     background = pygame.transform.scale(background, (1920, 1080))
     Button_image = pygame.image.load("assets/button.png")
     Button_image = pygame.transform.scale(Button_image, (300, 100))
-    back_button = Button(Button_image, on_click=lambda: manager.change_scene('town'), x=150, y=650)
+    back_button = Button(Button_image, on_click=lambda: manager.change_scene('town'), x=1750, y=1010, is_center=True)
 
 
 # 씬이 불러와진 상태일 때, 이벤트가 작동할 시 실행되는 메소드입니다.
@@ -31,6 +37,7 @@ def update():
 
 # 씬이 불러와진 상태일 때, 각 프레임마다 update 메소드 뒤에 실행되는 메소드입니다.
 def draw(screen):
+    screen.blit(background,(0,0))
     back_button.draw(screen)
     pass
 
