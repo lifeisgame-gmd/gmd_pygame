@@ -66,7 +66,6 @@ def setup(scene_manager):
         enemies.append(None)
 
     fight_data = FightData(PlayerData.party, enemies)
-
     for i in range(len(fight_data.ally)):
         if fight_data.ally[i] is not None:
             ally_i__image = fight_data.ally[i].image
