@@ -6,6 +6,7 @@ from select import select
 
 from managers.Entities import Monster, Entity, Player
 from managers.EntityManager import MonsterManager
+from managers.InterfaceManager import UIManager
 from managers.MapManager import MapManager
 from util.FightData import FightData
 from util.PlayerData import PlayerData
@@ -37,6 +38,7 @@ def setup(scene_manager):
     global next_turn_button
     global log
     global game_font
+    global ui
 
     mouse_pos = (0, 0)
     selected_unit = None
@@ -50,12 +52,13 @@ def setup(scene_manager):
     fight_background = Image("assets/fight/fight_bg.jpg").scale(1920, 1080)
     unit_select = Image("assets/UI/unit_select.png").scale(128, 128)
     unit_select_red = Image("assets/UI/unit_select_red.png").scale(128, 128)
-    skill_card = Image("assets/UI/empty_card.png").scale(256, 256)
+    skill_card = Image("assets/UI/empty_card.png").scale(70*(256/96), 256)
     next_turn_button = Image("assets/UI/next.png").scale(256, 256).button(1800, 800, lambda: next_turn(), is_center=True)
     black_background = Image("assets/UI/black.png").scale(1920, 1080)
     black_background.image = black_background.image.convert_alpha()
     black_background.image.set_alpha(200)
     game_font = pygame.font.Font(r"assets\font\neodgm_code\neodgm_code.ttf", 30)
+    ui = None
 
 
     json_data = MapManager.map_data
@@ -197,7 +200,7 @@ def click_sk(i: int):
 
 # 씬이 불러와진 상태일 때, 각 프레임마다 실행되는 메소드입니다.
 def update():
-    global mouse_pos, state, log_output
+    global mouse_pos, state, log_output, ui
     for i in range(len(fight_data.enemy)):
         if fight_data.enemy[i] is None:
             continue
@@ -208,6 +211,7 @@ def update():
         if state is not State.Fin:
             add_log("승리했다!")
             state = State.Fin
+            UIManager.activate('fight_end')
     for i in range(len(fight_data.ally)):
         if fight_data.ally[i] is None:
             continue
@@ -225,7 +229,8 @@ def update():
         state = State.NoPlayer
     pass
 
-    log_output = [game_font.render(i, True, (0, 0, 0)) for i in log.splitlines()[-5:]]
+    LOG_LENGTH = 15
+    log_output = [game_font.render(i, True, (0, 0, 0)) for i in log.splitlines()[-LOG_LENGTH:]]
 
 
 # 씬이 불러와진 상태일 때, 각 프레임마다 update 메소드 뒤에 실행되는 메소드입니다.
@@ -234,6 +239,7 @@ def draw(screen):
     fight_background.draw(screen, 0, 0)
     for i in range(len(log_output)):
         screen.blit(log_output[i], (0, i*30))
+
     if not (state is State.NoPlayer or state is State.EnemyTurn) and isinstance(selected_unit, Player):
         skills_num = selected_unit.skills
         for j in range(len(skills_num)):
@@ -293,7 +299,7 @@ def draw(screen):
 
 
 def get_x(j, skills_num):
-    gap = (96-26)*(256/96)
+    gap = 70*(256/96)
     j_ = 960 + (-gap / 2 * (len(skills_num) - 1) + gap * j)
     return j_
 
