@@ -5,13 +5,13 @@
     {
       "enemies": [{
         "id": "slime",
-        "lvl": 1
+        "lvl": 10
       }, {
         "id": "slime",
-        "lvl": 1
+        "lvl": 10
       }, {
         "id": "slime",
-        "lvl": 1
+        "lvl": 10
       }]
     }
   ]
