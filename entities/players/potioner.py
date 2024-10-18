@@ -29,3 +29,7 @@ class potioner(Player):
         Skill('potioner_heal', '회복의 물약', '지정한 팀원을 회복합니다.', "assets/player/no_img.png", defend, Need.Self)
     ]
 
+    def turn(self, fight_data):
+        
+        # do something you want
+
