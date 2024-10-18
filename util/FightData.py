@@ -9,6 +9,7 @@ class FightData:
     def __init__(self,ally: List[Optional['Player']],  enemy: List[Optional['Monster']]):
         self.ally = ally
         self.enemy = enemy
+        self.turn = 0
 
     def __str__(self):
         data = OrderedDict()
