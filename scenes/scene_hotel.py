@@ -1,5 +1,5 @@
 import pygame
-from Button import Button
+from util.Button import Button
 
 """
 Example Scene

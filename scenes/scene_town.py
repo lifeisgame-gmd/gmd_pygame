@@ -1,10 +1,22 @@
 import pygame
-from Util import Image
+
+from managers import EntityManager
+from managers.Entities import Monster
+from managers.EntityManager import MonsterManager
+from managers.MapManager import MapManager
+from util.Util import Image
+
 """
 Town Scene
 """
 
 # setup 메소드는 씬이 불러와질 때마다 실행되는 메소드입니다.
+
+
+def map_func():
+    manager.change_scene('map')
+    MapManager.cur += 1
+
 def setup(scene_manager):
     global manager
     global background
@@ -16,10 +28,11 @@ def setup(scene_manager):
 
     #이미지 불러오기
     background = Image("assets/town/village_background.png").scale(1920, 1080) # 배경
-    request_office = Image("assets/town/request_office.png").scale(300, 500).button(250, 650, lambda: manager.change_scene('quest')) # 의뢰소
-    smithy = Image("assets/town/smithy.png").scale(300, 500).button(650, 650, lambda: manager.change_scene('upgrade')) #대장간 / 강화소
-    hotel = Image("assets/town/hotel.png").scale(300, 500).button(1050, 650, lambda: manager.change_scene('hotel')) #여관 / 치료소
-    to_map = Image("assets/town/map.png").scale(300, 300).button(1620, 200, lambda: manager.change_scene('map'))
+    request_office = Image("assets/town/request_office.png").scale(300, 500).button(250, 650, lambda: manager.change_scene('quest'), is_center=True) # 의뢰소
+    smithy = Image("assets/town/smithy.png").scale(300, 500).button(650, 650, lambda: manager.change_scene('upgrade'), is_center=True) #대장간 / 강화소
+    hotel = Image("assets/town/hotel.png").scale(300, 500).button(1050, 650, lambda: manager.change_scene('gacha'), is_center=True) #여관 / 치료소
+    to_map = Image("assets/town/map.png").scale(300, 300).button(1620, 200, lambda: map_func(), is_center=True)
+
 
 
     
@@ -44,7 +57,6 @@ def draw(screen):
     smithy.draw(screen)
     hotel.draw(screen)
     to_map.draw(screen)
-    pass
 
 # 다른 씬으로 넘어갈 때 실행되는 메소드입니다.
 def cleanup():
