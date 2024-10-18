@@ -33,9 +33,9 @@ def setup(scene_manager: SceneManager):
 
 def move():
     current = map_data['map'][MapManager.cur]
-    if current is "T":
+    if current == "T":
         manager.change_scene('town')
-    elif current is "E":
+    elif current == "E":
         manager.change_scene('battle')
 
 # 씬이 불러와진 상태일 때, 이벤트가 작동할 시 실행되는 메소드입니다.
