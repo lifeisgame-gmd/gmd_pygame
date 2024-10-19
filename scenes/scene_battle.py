@@ -291,7 +291,7 @@ def draw(screen):
                 skills_num[j].image.draw(screen, get_x(j, skills_num)+1, 1080-256+35*(256/96)+1, is_center=True)
         for i in range(len(ally_button_arr)):
             if fight_data.ally[i] is not None:
-                if (target.need_data is Need.Ally or target.need_data is Need.Any):
+                if target.need_data is Need.Ally or target.need_data is Need.Any:
                     if ally_button_arr[i].check_click(mouse_pos):
                         unit_select_red.draw(screen, ally_button_arr[i].rect.centerx, 600, is_center=True)
                     ally_button_arr[i].draw(screen)
