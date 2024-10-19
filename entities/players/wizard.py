@@ -30,9 +30,9 @@ class Wizard(Player):
         return "마법사의 체력이 10 회복됐다!"
         
     skills = [
-        Skill('Wizard_fireattack', '파이어 볼!' ,'지정한 적을 공격합니다.', 'assets/fight/card1/jpg', fireattack, Need.Enemy)
-        Skill('Wizard_fireattack', '아이스 볼!' ,'지정한 적을 공격합니다.', 'assets/fight/card1/jpg', iceattack, Need.Enemy)  #Need - Enemy, Ally, Self, Any
-        Skill('Wizard_defend', '쉴드!', '방어벽을 전개합니다.', 'assets/player/no_img.png', defend, Need.Ally)
+        Skill('Wizard_fireattack', '파이어 볼!' ,'지정한 적을 공격합니다.', 'assets/fight/card1/jpg', fireattack, Need.Enemy),
+        Skill('Wizard_fireattack', '아이스 볼!' ,'지정한 적을 공격합니다.', 'assets/fight/card1/jpg', iceattack, Need.Enemy),  #Need - Enemy, Ally, Self, Any
+        Skill('Wizard_defend', '쉴드!', '방어벽을 전개합니다.', 'assets/player/no_img.png', defend, Need.Ally),
         Skill('Wizrad_recovery', '회복!', '체력을 회복합니다.', 'assets/player/no_img.png', recovery, Need.Self)
     ]
 
