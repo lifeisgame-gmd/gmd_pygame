@@ -2,7 +2,6 @@ from enum import Enum
 from typing import List, Optional
 
 import pygame
-from select import select
 
 from managers.Entities import Monster, Entity, Player
 from managers.EntityManager import MonsterManager
@@ -10,7 +9,7 @@ from managers.InterfaceManager import UIManager
 from managers.MapManager import MapManager
 from util.FightData import FightData
 from util.PlayerData import PlayerData
-from util.Skill import Skill, Need
+from util.Skill import Need
 from util.Util import Image
 
 """
@@ -65,10 +64,19 @@ def setup(scene_manager):
     map_data = json_data['stage'][MapManager.cur]
 
     enemies: List[Optional[Monster]] = [MonsterManager.get(i['id'], i['lvl']) for i in map_data['enemies'] if i]
+
     for i in range(4-len(enemies)):
         enemies.append(None)
 
     fight_data = FightData(PlayerData.party, enemies)
+
+    for i in fight_data.ally:
+        if i is not None:
+            i.initialize()
+    for i in fight_data.enemy:
+        if i is not None:
+            i.initialize()
+
     fight_data.turn = 0
     for i in range(len(fight_data.ally)):
         if fight_data.ally[i] is not None:
