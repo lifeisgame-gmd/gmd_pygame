@@ -1,6 +1,7 @@
 import copy
 
 from entities.monsters.slime import Slime
+from entities.players.NewPlayer import NewPlayer
 from entities.players.cat import Cat
 from managers.Entities import Player, Monster
 
@@ -23,6 +24,7 @@ class PlayerManager:
     @staticmethod
     def init():
         PlayerManager.arr['cat'] = Cat()
+        PlayerManager.arr['newPlayer'] = NewPlayer()
 
     @staticmethod
     def get(name: str, lvl: int) -> Player:

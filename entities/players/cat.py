@@ -8,7 +8,7 @@ from util.Skill import Skill, Need
 class Cat(Player):
 
     def __init__(self):
-        super().__init__('고양이',"assets/player/cat.png", 10, 4, 1)
+        super().__init__('고양이',"assets/player/cat.png", 10, 4)
 
 
     def defend(self, fight_data, additional_data):
@@ -21,6 +21,7 @@ class Cat(Player):
 
     skills = [
         Skill('cat_atk', '냥냥 펀치', '지정한 적을 공격합니다.', "assets/fight/card1.jpg", attack, Need.Enemy),
-        Skill('cat_def', '냥냥 방어', '털로 몸을 감싸 방어합니다.', "assets/player/no_img.png", defend, Need.Self)
+        Skill('cat_def', '냥냥 방어', '털로 몸을 감싸 방어합니다.', "assets/player/no_img.png", defend, Need.Self),
+        Skill('cat_atk', '냥냥 펀치', '지정한 적을 공격합니다.', "assets/fight/card1.jpg", attack, Need.Enemy)
     ]
 
