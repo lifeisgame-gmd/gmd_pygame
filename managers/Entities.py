@@ -34,6 +34,9 @@ class Entity:
     def load_image(self):
         self.image = Image(self.src)
 
+    def turn(self, fight_data):
+        return ""
+
 
 class Monster(Entity):
 

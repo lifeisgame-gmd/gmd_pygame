@@ -5,14 +5,18 @@
     {
       "enemies": [{
         "id": "slime",
-        "lvl": 10
+        "lvl": 1
       }, {
         "id": "slime",
-        "lvl": 10
+        "lvl": 1
       }, {
         "id": "slime",
-        "lvl": 10
-      }]
+        "lvl": 1
+      }],
+      "award": {
+        "gold": 10,
+        "exp": 20
+      }
     }
   ]
 }

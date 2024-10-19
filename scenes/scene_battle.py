@@ -69,6 +69,7 @@ def setup(scene_manager):
         enemies.append(None)
 
     fight_data = FightData(PlayerData.party, enemies)
+    fight_data.turn = 0
     for i in range(len(fight_data.ally)):
         if fight_data.ally[i] is not None:
             ally_i__image = fight_data.ally[i].image
@@ -227,7 +228,15 @@ def update():
             add_log(result)
         add_log("적군 턴 종료!")
         state = State.NoPlayer
-    pass
+        fight_data.turn += 1
+        for i in fight_data.ally:
+            if i is None:
+                continue
+            result = i.turn(fight_data)
+            if result is None:
+                continue
+            if len(result) > 0:
+                add_log(result)
 
     LOG_LENGTH = 15
     log_output = [game_font.render(i, True, (0, 0, 0)) for i in log.splitlines()[-LOG_LENGTH:]]
