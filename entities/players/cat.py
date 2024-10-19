@@ -21,7 +21,6 @@ class Cat(Player):
 
     skills = [
         Skill('cat_atk', '냥냥 펀치', '지정한 적을 공격합니다.', "assets/fight/card1.jpg", attack, Need.Enemy),
-        Skill('cat_def', '냥냥 방어', '털로 몸을 감싸 방어합니다.', "assets/player/no_img.png", defend, Need.Self),
-        Skill('cat_atk', '냥냥 펀치', '지정한 적을 공격합니다.', "assets/fight/card1.jpg", attack, Need.Enemy)
+        Skill('cat_def', '냥냥 방어', '털로 몸을 감싸 방어합니다.', "assets/player/no_img.png", defend, Need.Self)
     ]
 
