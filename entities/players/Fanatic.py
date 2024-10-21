@@ -19,7 +19,7 @@ class fanatic(Player):
         
         self.atk += self.atk * (3/10) # 공격력은 atk입니다. ((ㅈㅅ;;; 멍청이ㅣ가되
       else:
-        self.buff_time += 3
+        self.buff_time += fight_data.turn +3
 
         return "광신도의 공격력이 증가했다!" # 방어력이 증가한 적은 없습니다. ((아니 이거 중간에 시간 없어서 수정 못한거야............. 멍청이가되
 
