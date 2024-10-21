@@ -14,7 +14,7 @@ class HolyKnight(Player):
         self.buff_time = None
 
     def buff(self, fight_data, additional_data):
-        if buff_time != None: 
+        if buff_time == None: 
           self.buff_time = fight_data.turn + 3
         
           self.protect += self.hp_m * (3/10) 
@@ -23,7 +23,7 @@ class HolyKnight(Player):
           self.buff_time += fight_data.turn +3 #버프 중첩 막는 용도. 한 번 더 사용했을때 버프 시간만 늘어남.
     
     def Ally_defend(self, fight_data, additional_data):
-        self.protect += self.hp_m * (2/10)
+        additional_data.protect += self.hp_m * (2/10)
         return "성기사의 방어력이 "+ self.hp_m * (2/10)+  "만큼 증가했다!"
 
     def attack(self, fight_data: FightData, additional_data: Entity):
