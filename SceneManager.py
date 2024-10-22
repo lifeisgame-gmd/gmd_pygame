@@ -49,7 +49,7 @@ class SceneManager:
                 else:
                     SceneManager.ui.handle_event(event)
             self.scene_module.update() # 현재 불러와진 씬 모듈의 update 메소드를 실행합니다.
-            self.screen.fill((0, 0, 0)) # draw 메소드를 실행하기 전에, 화면을 검은색으로 채워주네요.
+            self.virtual_screen.fill((0, 0, 0)) # draw 메소드를 실행하기 전에, 화면을 검은색으로 채워주네요.
             self.scene_module.draw(self.virtual_screen) # 현재 불러와진 씬 모듈의 draw 메소드를 실행합니다. 출력할 screen을 매개변수로 주었네요.
             if SceneManager.ui is not None:
                 SceneManager.ui.draw(self.virtual_screen)

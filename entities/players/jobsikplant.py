@@ -1,5 +1,6 @@
-from managers.Entities import Monster
+from managers.Entities import Monster, Player, Entity
 from util.FightData import FightData
+from util.Skill import Skill, Need
 
 
 class jobsikplant(Player):

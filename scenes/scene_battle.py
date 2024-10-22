@@ -2,7 +2,6 @@ from enum import Enum
 from typing import List, Optional
 
 import pygame
-from select import select
 
 from managers.Entities import Monster, Entity, Player
 from managers.EntityManager import MonsterManager
@@ -10,7 +9,7 @@ from managers.InterfaceManager import UIManager
 from managers.MapManager import MapManager
 from util.FightData import FightData
 from util.PlayerData import PlayerData
-from util.Skill import Skill, Need
+from util.Skill import Need
 from util.Util import Image
 
 """
@@ -65,10 +64,19 @@ def setup(scene_manager):
     map_data = json_data['stage'][MapManager.cur]
 
     enemies: List[Optional[Monster]] = [MonsterManager.get(i['id'], i['lvl']) for i in map_data['enemies'] if i]
+
     for i in range(4-len(enemies)):
         enemies.append(None)
 
     fight_data = FightData(PlayerData.party, enemies)
+
+    for i in fight_data.ally:
+        if i is not None:
+            i.initialize()
+    for i in fight_data.enemy:
+        if i is not None:
+            i.initialize()
+
     fight_data.turn = 0
     for i in range(len(fight_data.ally)):
         if fight_data.ally[i] is not None:
@@ -253,7 +261,7 @@ def draw(screen):
         skills_num = selected_unit.skills
         for j in range(len(skills_num)):
             skills_num[j].button.draw(screen)
-            skills_num[j].image.draw(screen, get_x(j, skills_num), 1080-256+35*(256/96), is_center=True)
+            skills_num[j].image.draw(screen, get_x(j, skills_num)+1, 1080-256+35*(256/96)+1, is_center=True)
 
     if selected_unit:
         if isinstance(selected_unit, Player):
@@ -280,10 +288,10 @@ def draw(screen):
         for j in range(len(skills_num)):
             if skills_num[j] is target:
                 skills_num[j].button.draw(screen)
-                skills_num[j].image.draw(screen, get_x(j, skills_num), 1080-256+35*(256/96), is_center=True)
+                skills_num[j].image.draw(screen, get_x(j, skills_num)+1, 1080-256+35*(256/96)+1, is_center=True)
         for i in range(len(ally_button_arr)):
             if fight_data.ally[i] is not None:
-                if (target.need_data is Need.Ally or target.need_data is Need.Any):
+                if target.need_data is Need.Ally or target.need_data is Need.Any:
                     if ally_button_arr[i].check_click(mouse_pos):
                         unit_select_red.draw(screen, ally_button_arr[i].rect.centerx, 600, is_center=True)
                     ally_button_arr[i].draw(screen)

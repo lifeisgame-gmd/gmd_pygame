@@ -20,6 +20,7 @@ class Entity:
         self.atk_o = atk
         self.protect = 0
         self.lvl = lvl
+        self.tag = []
 
     def damage(self, atk):
         self.hp_c -= max(atk - self.protect, 0)
@@ -36,6 +37,9 @@ class Entity:
 
     def turn(self, fight_data):
         return ""
+
+    def initialize(self):
+        self.tag = []
 
 
 class Monster(Entity):
