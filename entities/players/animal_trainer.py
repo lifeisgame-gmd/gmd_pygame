@@ -28,7 +28,14 @@ class Animal_Trainer(Player):
         return additional_data.name + "을(를) " + str(self.atk)+"의 데미지로 공격했다!"
 
     skills = [
-        Skill('cat_atk', '냥냥 펀치', '지정한 적을 공격합니다.', "assets/player/loli.jpg", call_animal, Need.Enemy),
-        Skill('cat_def', '냥냥 방어', '털로 몸을 감싸 방어합니다.', "assets/player/no_img.png", defend, Need.Self)
+        Skill('call_animal', '동물 부르기', '랜덤으로 동물을 부릅니다.', "assets/player/loli.jpg", call_animal, Need.Enemy),
+        Skill('bite', '물어!', self.animal + '이(가) 상대방을 공격합니다.', "assets/player/no_img.png", defend, Need.Self)
     ]
+    
+    def turn(self, fight_data,buff_time,original_atk):
+        if self.buff_time == fight_data.turn:
+            self.atk = self.original_atk
+            self.buff_time = None
+        pass
+    
 
