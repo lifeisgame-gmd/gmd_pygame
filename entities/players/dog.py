@@ -8,7 +8,7 @@ class Dog(Player):
 
 
     def __init__(self):
-        super().__init__('강아지',"assets/player/dog.png", 10, 4, 1) # 이름, 사진 경로, 공격력, 체력, 1
+        super().__init__('강아지',"assets/player/dog.png", 10, 4) # 이름, 사진 경로, 공격력, 체력, 1
 
 
     def punch(self, fight_data: FightData, additional_data: Entity):
@@ -16,7 +16,7 @@ class Dog(Player):
         return "멍멍이가 적군을 10의 데미지로 공격했다"
         
     skills = [
-        Skill('dog_punch', '멍멍 펀치!' ,'지정한 적을 공격합니다.', 'assets/fight/card1/jpg', Need.Enemy) #Need - Enemy, Ally, Self, Any
+        Skill('dog_punch', '멍멍 펀치!' ,'지정한 적을 공격합니다.', 'assets/fight/card1/jpg', punch, Need.Enemy) #Need - Enemy, Ally, Self, Any
     ]
 
 
