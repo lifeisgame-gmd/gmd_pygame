@@ -8,13 +8,13 @@ from util.Skill import Skill, Need
 class HolyKnight(Player):
 
     def __init__(self):
-        super().__init__('성기사',"assets/player/cat.png", 2, 12, 1)
+        super().__init__('성기사',"assets/player/cat.png", 2, 12)
         self.protect += 3
         self.original_protect = self.protect
         self.buff_time = None
 
     def buff(self, fight_data, additional_data):
-        if buff_time == None: 
+        if self.buff_time is None:
           self.buff_time = fight_data.turn + 3
         
           self.protect += self.hp_m * (3/10) 
@@ -36,7 +36,7 @@ class HolyKnight(Player):
         Skill('holyknight_buff', '신의 방패', '방어 증가.', "assets/fight/card1.jpg", buff, Need.Self)
     ]
 
-    def turn(self, fight_data,buff_time,original_atk):
+    def turn(self, fight_data):
         if self.buff_time == fight_data.turn:
             self.protect = self.original_protect
             self.buff_time = None
