@@ -8,14 +8,14 @@ from util.Skill import Skill, Need
 class Cat(Player):
 
     def __init__(self):
-        super().__init__('신호등',"assets/player/shd.png", 10, 4, 1)
+        super().__init__('신호등',"assets/player/shd.png", 10, 4)
 
 
     def defend(self, fight_data, additional_data):
         self.defend += 5
         return "신호등의 방어력이 5 증가했다!"
 
-    def defend(self, fight_data: FightData, additional_data): Entity):
+    def defend(self, fight_data: FightData, additional_data):
         additional_data.damage(self.atk)      #스턴!!        #스턴 넣기!!!!!
         return "신호가 빨간불이 되었다!"
 
