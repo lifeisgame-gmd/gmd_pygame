@@ -6,7 +6,7 @@ from util.Skill import Skill, Need
 class jobsikplant(Player):
 
     def __init__(self):
-        super().__init__('잡식식물',"assets/player/cat.png", 10, 4, 1)
+        super().__init__('잡식식물',"assets/player/cat.png", 10, 4)
 
 
     def defend(self, fight_data, additional_data: Entity):
