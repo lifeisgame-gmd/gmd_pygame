@@ -21,7 +21,7 @@ class Priest(Player):
         additional_data.damage(self.atk)
         return additional_data.name + "을(를) " + str(self.atk)+"의 데미지로 공격했다!"
     
-    def heal(self, fight_data: FightData, additional_data: Ally):
+    def heal(self, fight_data: FightData, additional_data: Entity):
         additional_data.hp_c = min(additional_data.hp_c + self.atk + 5, additional_data.hp_m)
         return additional_data.name + "을(를) " + min(additional_data.hp_c + self.atk + 5, additional_data.hp_m)+"만큼 회복시켰다!"
 
