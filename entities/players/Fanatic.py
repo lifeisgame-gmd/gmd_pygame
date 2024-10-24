@@ -9,12 +9,12 @@ class fanatic(Player):
 
    
     def __init__(self):
-        super().__init__('광신도',"assets/player/Priest.png", 2, 3, 1) #공,체,1k
+        super().__init__('광신도',"assets/player/Priest.png", 2, 3) #공,체,1k
         self.original_atk = self.atk
         self.buff_time = None
 
     def buff(self, fight_data, additional_data):
-      if buff_time == None:
+      if self.buff_time is None:
         self.buff_time = fight_data.turn + 3
         
         self.atk += self.atk * (3/10) # 공격력은 atk입니다. ((ㅈㅅ;;; 멍청이ㅣ가되
@@ -37,7 +37,7 @@ class fanatic(Player):
         Skill('fanatic_Heal', '신의 축복일지니!', '자신의 hp를 회복시킨다.', "assets/player/no_img.png", heal, Need.Self)
     ]
 
-    def turn(self, fight_data,buff_time,original_atk):
+    def turn(self, fight_data):
         if self.buff_time == fight_data.turn:
             self.atk = self.original_atk
             self.buff_time = None
