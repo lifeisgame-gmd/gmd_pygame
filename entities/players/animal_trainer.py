@@ -19,7 +19,7 @@ class Animal_Trainer(Player):
           self.animal = "개"
           del self.skills [1]
           self.skills.append(Skill('bite','물어!','지정한 상대 1명을 공격한다.',"assets/player/no_img",bite, Need.Enemy))
-          self.skills.append(Skill('scar_licking','상처핥기','스스로의 hp를 약간 회복한다.',"assets/player/no_img",licking, Need.self))
+          self.skills.append(Skill('scar_licking','상처핥기','스스로의 hp를 약간 회복한다.',"assets/player/no_img",licking, Need.Self))
         else if R <= 95:
           self.animal = "호랑이"
         else:
