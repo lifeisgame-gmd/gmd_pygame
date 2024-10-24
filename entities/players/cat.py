@@ -8,7 +8,7 @@ from util.Skill import Skill, Need
 class Cat(Player):
 
     def __init__(self):
-        super().__init__('고양이',"assets/player/cat.png", 10, 4)
+        super().__init__('고양이',"assets/player/cat.png", 10, 10)
 
 
     def defend(self, fight_data, additional_data):
