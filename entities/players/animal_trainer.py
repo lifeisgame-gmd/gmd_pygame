@@ -26,7 +26,27 @@ class Animal_Trainer(Player):
           self.animal = "용"
         return "동물 조련사는 " +self.animal + "을(를) 불러냈다!"
         
-    def bite (self, fight_data: FightData, additional_data: Entity)
+    def licking(self, fight_data: FightData, additional_data):
+      R = random(1,3)
+      if R == 1
+        if self.atk * (45/100)<1:
+          self.hp_c += 1
+        else:
+          self.hp_c += self.atk * (45/100)
+      else if R == 2
+        if self.atk * (50/100)<1:
+          self.hp_c += 1
+        else:
+          self.hp_c += self.atk * (60/100)
+      else if R == 1
+        if self.atk * (60/100)<1:
+          self.hp_c += 1
+        else:
+          self.hp_c += self.atk * (45/100)
+      if self.hp_c > self.hp_m:
+        self.hp_c = self.hp_m
+      
+    def bite(self, fight_data: FightData, additional_data: Entity):
     
     def attack(self, fight_data: FightData, additional_data: Entity):
         additional_data.damage(self.atk)
