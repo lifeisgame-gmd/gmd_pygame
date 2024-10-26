@@ -1,8 +1,5 @@
 import pygame
 
-from managers import EntityManager
-from managers.Entities import Monster
-from managers.EntityManager import MonsterManager
 from managers.MapManager import MapManager
 from util.Util import Image
 
