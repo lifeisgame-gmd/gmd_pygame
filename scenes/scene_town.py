@@ -1,6 +1,6 @@
 import pygame
 
-from managers.MapManager import MapManager
+import managers
 from util.Util import Image
 
 """
@@ -12,7 +12,7 @@ Town Scene
 
 def map_func():
     manager.change_scene('map')
-    MapManager.cur += 1
+    managers.MapManager.cur += 1
 
 def setup(scene_manager):
     global manager
