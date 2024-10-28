@@ -28,9 +28,17 @@ class Animal_Trainer(Player):
           self.animal = "호랑이"
           if len(self.skills)==2:
             del self.skills [1]
+          else:
+            del self.skills[1]
             del self.skills[2]
+          self.skills.append(Skill('growling','울음소리','지정한 상대 1명의 공격력을 낮춘다.',"assets/player/no_img",growling, Need.Enemy))
         else:
           self.animal = "용"
+          if len(self.skills)==2:
+            del self.skills [1]
+          else:
+            del self.skills[1]
+            del self.skills[2]    
         return "동물 조련사는 " +self.animal + "을(를) 불러냈다!"
         
     def licking(self, fight_data: FightData, additional_data):
@@ -62,8 +70,8 @@ class Animal_Trainer(Player):
       else:
         additional_data.damage(self.atk*2)
       
-    def 
-      
+    def growling(self, fight_data:FightData, additional_data: Entity):
+      additional_data.atk(self.atk / )
     def attack(self, fight_data: FightData, additional_data: Entity):
         additional_data.damage(self.atk)
         return additional_data.name + "을(를) " + str(self.atk)+"의 데미지로 공격했다!"
