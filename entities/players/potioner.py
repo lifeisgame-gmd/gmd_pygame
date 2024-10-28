@@ -8,7 +8,7 @@ from util.Skill import Skill, Need
 class potioner(Player):
 
     def __init__(self):
-        super().__init__('연금술사',"assets/player/shd.png", 10, 4, 1)
+        super().__init__('연금술사',"assets/player/shd.png", 20, 20, 1)
 
 
     def defend(self, fight_data, additional_data: Entity):

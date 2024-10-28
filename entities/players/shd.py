@@ -8,7 +8,7 @@ from util.Skill import Skill, Need
 class shd(Player):
 
     def __init__(self):
-        super().__init__('신호등',"assets/player/shd.png", 10, 4, 1)
+        super().__init__('신호등',"assets/player/shd.png", 50, 15, 1)
 
 
     def defend(self, fight_data, additional_data):
