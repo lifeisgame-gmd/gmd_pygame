@@ -45,7 +45,7 @@ class Entity:
 class Monster(Entity):
 
     def __init__(self, name: str, src: str, hp: int, atk: int, lvl=1):
-        super().__init__(name, src, hp, atk, lvl)
+        super().__init__(name, src, hp, atk)
 
     @abstractmethod
     def action(self, fight_data):
