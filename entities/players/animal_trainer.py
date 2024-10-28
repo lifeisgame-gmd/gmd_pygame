@@ -71,7 +71,7 @@ class Animal_Trainer(Player):
         additional_data.damage(self.atk*2)
       
     def growling(self, fight_data:FightData, additional_data: Entity):
-      additional_data.atk(self.atk / )
+      additional_data.atk(self.atk / 2 )
     def attack(self, fight_data: FightData, additional_data: Entity):
         additional_data.damage(self.atk)
         return additional_data.name + "을(를) " + str(self.atk)+"의 데미지로 공격했다!"
