@@ -5,7 +5,7 @@ from managers.Entities import Player, Entity
 from util.FightData import FightData
 from util.Skill import Skill, Need
 
-class Closecombatant(Player):
+class CloseCombatant(Player):
 
     def __init__(self):
         super().__init__('근접전투원', "assests/player/closecombantant.png", 20,65)

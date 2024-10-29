@@ -5,7 +5,7 @@ from util.FightData import FightData
 from util.Skill import Skill, Need
 
 
-class Cat(Player):
+class TrafficLight(Player):
 
     def __init__(self):
         super().__init__('신호등',"assets/player/shd.png", 10, 4)

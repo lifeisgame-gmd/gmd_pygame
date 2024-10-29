@@ -3,7 +3,7 @@ from util.FightData import FightData
 from util.Skill import Skill, Need
 
 
-class jobsikplant(Player):
+class OmnivorePlant(Player):
 
     def __init__(self):
         super().__init__('잡식식물',"assets/player/cat.png", 10, 4)
