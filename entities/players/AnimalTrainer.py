@@ -13,8 +13,37 @@ class Animal_Trainer(Player):
         self.animal = ""
 
 
+    def licking(self, fight_data: FightData, additional_data):
+        R = random.randrange(1,3)
+        if R == 1:
+            if self.atk * (45/100)<1:
+                self.hp_c += 1
+            else:
+                self.hp_c += self.atk * (45/100)
+        elif R == 2:
+            if self.atk * (50/100)<1:
+                self.hp_c += 1
+            else:
+                self.hp_c += self.atk * (60/100)
+        elif R == 3:
+            if self.atk * (60/100)<1:
+                self.hp_c += 1
+            else:
+                self.hp_c += self.atk * (45/100)
+        if self.hp_c > self.hp_m:
+            self.hp_c = self.hp_m
+
+    def bite(self, fight_data: FightData, additional_data: Entity):
+        R = random.randrange(1,3)
+        if R == 1:
+            additional_data.damage(self.atk*1.5)
+        elif R == 2:
+            additional_data.damage(self.atk*1.7)
+        else:
+            additional_data.damage(self.atk*2)
+
     def call_animal(self, fight_data, additional_data):
-        R = random(1,100)
+        R = random.randrange(1,100)
         if R <= 70:
           self.animal = "개"
           if len(self.skills)==2:
@@ -22,9 +51,9 @@ class Animal_Trainer(Player):
           else:
             del self.skills[1]
             del self.skills[2]          
-          self.skills.append(Skill('bite','물어!','지정한 상대 1명을 공격한다.',"assets/player/no_img",bite, Need.Enemy))
-          self.skills.append(Skill('scar_licking','상처핥기','스스로의 hp를 약간 회복한다.',"assets/player/no_img",licking, Need.self))
-        else if R <= 95:
+          self.skills.append(Skill('bite','물어!','지정한 상대 1명을 공격한다.',"assets/player/no_img", self.bite, Need.Enemy))
+          self.skills.append(Skill('scar_licking','상처핥기','스스로의 hp를 약간 회복한다.',"assets/player/no_img",self.licking, Need.self))
+        elif R <= 95:
           self.animal = "호랑이"
           if len(self.skills)==2:
             del self.skills [1]
@@ -32,37 +61,8 @@ class Animal_Trainer(Player):
         else:
           self.animal = "용"
         return "동물 조련사는 " +self.animal + "을(를) 불러냈다!"
-        
-    def licking(self, fight_data: FightData, additional_data):
-      R = random(1,3)
-      if R == 1
-        if self.atk * (45/100)<1:
-          self.hp_c += 1
-        else:
-          self.hp_c += self.atk * (45/100)
-      else if R == 2
-        if self.atk * (50/100)<1:
-          self.hp_c += 1
-        else:
-          self.hp_c += self.atk * (60/100)
-      else if R == 3
-        if self.atk * (60/100)<1:
-          self.hp_c += 1
-        else:
-          self.hp_c += self.atk * (45/100)
-      if self.hp_c > self.hp_m:
-        self.hp_c = self.hp_m
-      
-    def bite(self, fight_data: FightData, additional_data: Entity):
-      R = random(1,3)
-      if R == 1:
-        additional_data.damage(self.atk*1.5)
-      else if R == 2:
-        additional_data.damage(self.atk*1.7)
-      else:
-        additional_data.damage(self.atk*2)
-      
-    def 
+
+
       
     def attack(self, fight_data: FightData, additional_data: Entity):
         additional_data.damage(self.atk)
