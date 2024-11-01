@@ -25,6 +25,9 @@ class Entity:
     def damage(self, atk):
         self.hp_c -= max(atk - self.protect, 0)
 
+    def heal(self, amount):
+        self.hp_c += min(self.hp_c+amount, self.hp_m)
+
     def lvl_up(self, lvl: int):
         self.lvl += lvl
         self.hp_c += self.hp_o * self.lvl - self.hp_m
@@ -45,7 +48,7 @@ class Entity:
 class Monster(Entity):
 
     def __init__(self, name: str, src: str, hp: int, atk: int, lvl=1):
-        super().__init__(name, src, hp, atk, lvl)
+        super().__init__(name, src, hp, atk)
 
     @abstractmethod
     def action(self, fight_data):
