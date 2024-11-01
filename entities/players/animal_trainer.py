@@ -11,7 +11,7 @@ class Animal_Trainer(Player):
     def __init__(self):
         super().__init__('동물조련사',"assets/player/cat.png", 2, 4)
         self.animal = ""
-        self.buff_time = 0
+        self.enemy_buff_time = 0
 
 
     def call_animal(self, fight_data, additional_data):
@@ -73,8 +73,9 @@ class Animal_Trainer(Player):
       
     def growling(self, fight_data:FightData, additional_data: Entity):
       self.original_enemy_atk = additional_data.atk
-      additional_data.atk(additional_data.atk (8/10) )
-      self.buff_time = Fight_data.turn + 4
+      additional_data.atk(additional_data.atk * (8/10) )
+      self.enemy_buff_time = Fight_data.turn + 4
+      return additional_data.name + "의 공격력을 " + additional_data.atk * (8/10) + "만큼 감소시켰다!"
     def attack(self, fight_data: FightData, additional_data: Entity):
         additional_data.damage(self.atk)
         return additional_data.name + "을(를) " + str(self.atk)+"의 데미지로 공격했다!"
@@ -85,7 +86,7 @@ class Animal_Trainer(Player):
     ]
     
     def turn(self, fight_data,buff_time,original_atk):
-        if self.buff_time == fight_data.turn:
+        if self.enemy_buff_time == fight_data.turn:
             additional_data.atk additional_data.enemy_atk
-            self.buff_time = 0
+            self.enemy_buff_time = 0
         pass
