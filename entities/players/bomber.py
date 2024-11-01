@@ -30,7 +30,7 @@ class bomber(Player):
         return additional_data.name + "을(를) " + str(self.atk)+"의 데미지로 공격했다!"
 
     skills = [
-        Skill('cat_atk', '냥냥 펀치', '지정한 적을 공격합니다.', "assets/player/loli.jpg", attack, Need.Enemy),
-        Skill('cat_def', '냥냥 방어', '폭탄들 던져 1명에게 공격력 만큼의 데미지를 준다.', "assets/player/no_img.png", attack, Need.Enemy)
+        Skill('bomber_atk1', '냥냥 펀치', '지정한 적을 공격합니다.', "assets/player/loli.jpg", attack, Need.Enemy),
+        Skill('bomber_atk2', '냥냥 방어', '폭탄들 던져 1명에게 공격력 만큼의 데미지를 준다.', "assets/player/no_img.png", attack, Need.Enemy)
     ]
 

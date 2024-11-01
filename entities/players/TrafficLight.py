@@ -31,8 +31,8 @@ class TrafficLight(Player):
         return additional_data.name + "을(를) " + str(self.atk)+"의 데미지로 공격했다!"
 
     skills = [
-        Skill('shd_atk', '초록불', '지정한 적을 공격합니다.', "assets/fight/card1.jpg", attack, Need.Enemy),
-        Skill('shd_cc', '정지', '빨간불이 되어 상대가 다음 신호를 기다립니다.', "assets/player/no_img.png", attack, Need.Enemy), #지정한 한명 스턴넣기
-        Skill('shd_def', '빨간불', '정지하여 자신을 보호합니다.', "assets/player/no_img.png", defend, Need.Self)
+        Skill('TrafficLight_atk', '초록불', '지정한 적을 공격합니다.', "assets/fight/card1.jpg", attack, Need.Enemy),
+        Skill('TrafficLight_cc', '정지', '빨간불이 되어 상대가 다음 신호를 기다립니다.', "assets/player/no_img.png", attack, Need.Enemy), #지정한 한명 스턴넣기
+        Skill('TrafficLight_def', '빨간불', '정지하여 자신을 보호합니다.', "assets/player/no_img.png", defend, Need.Self)
     ]
 

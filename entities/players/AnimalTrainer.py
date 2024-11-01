@@ -75,10 +75,11 @@ class Animal_Trainer(Player):
       
     def growling(self, fight_data:FightData, additional_data: Entity):
       for i in range(0,4):
-        if target[i] ==
+        if target[i] == 0:
+          target[i] = additional_data
+          self.enemy_buff_time[i] = fight_data + 3
       self.original_enemy_atk = additional_data.atk
       additional_data.atk(additional_data.atk * (8/10) )
-      self.enemy_buff_time = fight_data.turn + 4
       return additional_data.name + "의 공격력을 " + additional_data.atk * (8/10) + "만큼 감소시켰다!"
     
     def attack(self, fight_data: FightData, additional_data: Entity):
@@ -92,7 +93,8 @@ class Animal_Trainer(Player):
     
     def turn(self, fight_data):
         global target
-        if self.enemy_buff_time == fight_data.turn and target is not None:
-            target.atk = target.atk_o
+        for i in range(0,4):
+          if self.enemy_buff_time[i] == fight_data.turn and target[i] != 0:
+            target[i].atk = target[i].atk_o
             self.enemy_buff_time = 0
         pass
