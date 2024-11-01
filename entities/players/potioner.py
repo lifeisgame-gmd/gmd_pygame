@@ -5,7 +5,7 @@ from util.FightData import FightData
 from util.Skill import Skill, Need
 
 
-class potioner(Player):
+class Potioner(Player):
 
     def __init__(self):
         super().__init__('연금술사',"assets/player/shd.png", 20, 20, 1)

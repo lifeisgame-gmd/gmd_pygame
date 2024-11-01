@@ -5,7 +5,7 @@ from util.FightData import FightData
 from util.Skill import Skill, Need
 
 
-class samurai(Player):
+class Samurai(Player):
 
     def __init__(self):
         super().__init__('검사',"assets/player/cat.png", 7, 5)

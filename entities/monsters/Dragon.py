@@ -4,7 +4,7 @@ from managers import Monster, Player
 from util.FightData import FightData
 
 
-class SkeletonArcher(Monster):
+class Dragon(Monster):
     def __init__(self):
         super().__init__("드래곤", "assets/player/loli.png", 100, 250)
 

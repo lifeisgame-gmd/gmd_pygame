@@ -4,7 +4,7 @@ from managers.Entities import Player, Entity
 from util.FightData import FightData
 from util.Skill import Skill, Need
 
-class batman(Player):
+class Batman(Player):
     
 
     def __init__(self):
