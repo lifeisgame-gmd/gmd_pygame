@@ -11,7 +11,7 @@ class potioner(Player):
         super().__init__('연금술사',"assets/player/shd.png", 20, 20, 1)
 
 
-    def defend(self, fight_data, additional_data: Entity):
+    def heal(self, fight_data, additional_data: Entity):
         additional_data.hp_c = min(additional_data.hp_c + 10, additional_data.hp_m)
         return "회복의 물약을 사용했다!"
 

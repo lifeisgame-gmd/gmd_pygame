@@ -1,9 +1,6 @@
 import pygame
 
-from managers import EntityManager
-from managers.Entities import Monster
-from managers.EntityManager import MonsterManager
-from managers.MapManager import MapManager
+import managers
 from util.Util import Image
 
 """
@@ -15,7 +12,7 @@ Town Scene
 
 def map_func():
     manager.change_scene('map')
-    MapManager.cur += 1
+    managers.MapManager.cur += 1
 
 def setup(scene_manager):
     global manager

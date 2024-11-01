@@ -1,8 +1,8 @@
 import copy
 
-from entities.monsters.slime import Slime
+from entities.monsters.Slime import Slime
 from entities.players.NewPlayer import NewPlayer
-from entities.players.cat import Cat
+from entities.players.Cat import Cat
 from managers.Entities import Player, Monster
 
 

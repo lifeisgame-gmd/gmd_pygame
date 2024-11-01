@@ -17,7 +17,7 @@ class stone(Player):
 
     def punch(self, fight_data: FightData, additional_data: Entity):
         additional_data.damage(10)
-        return "적군이 돌맹이를 밟고 너머져 10의 데미지를 받았다"
+        return "적군이 돌맹이를 밟고 넘어져 10의 데미지를 받았다"
         
     skills = [
         Skill('stone_atk', '가만히 있기' ,'지정한 적이 돌맹이를 밟습니다.', 'assets/fight/card1/jpg', Need.Enemy) #Need - Enemy, Ally, Self, Any

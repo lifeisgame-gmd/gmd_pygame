@@ -9,12 +9,13 @@ from util.Util import Image
 
 class FightEnd(Interface):
     def __init__(self, scene_manager: SceneManager):
-        global button
-        global manager
+        global manager, plate,button
         manager = scene_manager
-        button = Image('assets/UI/button.png').button(960, 540, lambda: self.button_click(), is_center=True)
+        button = Image('assets/UI/button.png').button(960, 700, lambda: self.button_click(), is_center=True)
+        plate = Image('assets/UI/setting.png').subsurface(128, 0, 128, 144).scale(384, 432)
 
     def draw(self, screen):
+        plate.draw(screen, 960, 540, is_center=True)
         button.draw(screen)
         pass
 

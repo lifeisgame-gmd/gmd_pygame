@@ -1,6 +1,6 @@
 from typing import List
 
-from entities.players.cat import Cat
+from entities.players.Cat import Cat
 from managers.Entities import Player
 from managers.EntityManager import PlayerManager
 
