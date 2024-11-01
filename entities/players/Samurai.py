@@ -17,12 +17,12 @@ class samurai(Player):
 
     def attack(self, fight_data: FightData, additional_data: Entity):
         for samu_atk in range(3):
-        additional_data.damage(self.atk)
-        break
+            additional_data.damage(self.atk)
+
         return additional_data.name + "을(를) " + str(self.atk)+"의 데미지로 3번 공격했다!"
 
     skills = [
-        Skill('cat_atk', '빠르게 베기', '지정한 적을 빠르게 베어 공격합니다.', "assets/player/loli.jpg", attack, Need.Enemy),
-        Skill('cat_def', '3연 베기', '적을 3번 연속 베어 공격합니다.', "assets/player/no_img.png", defend, Need.Self)
+        Skill('samurai_atk', '빠르게 베기', '지정한 적을 빠르게 베어 공격합니다.', "assets/player/loli.jpg", attack, Need.Enemy),
+        Skill('samurai_def', '3연 베기', '적을 3번 연속 베어 공격합니다.', "assets/player/no_img.png", attack, Need.Self)
     ]
 
