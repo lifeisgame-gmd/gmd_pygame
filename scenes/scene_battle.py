@@ -16,6 +16,24 @@ from util.Util import Image
 Example Scene
 """
 
+class Logger:
+    log: str = ""
+    LOG_LENGTH = 15
+    log_output = []
+    @classmethod
+    def init(cls):
+        cls.log = ""
+
+    @classmethod
+    def add(cls, context):
+        if len(context) > 0:
+            cls.log += "\n" + context
+            cls.load()
+
+    @classmethod
+    def load(cls):
+        cls.log_output = [game_font.render(i, True, (0, 0, 0)) for i in cls.log.splitlines()[-cls.LOG_LENGTH:]]
+
 # setup 메소드는 씬이 불러와질 때마다 실행되는 메소드입니다.
 def setup(scene_manager):
     global manager
@@ -45,14 +63,14 @@ def setup(scene_manager):
     enemy_button_arr = []
     state = State.NoPlayer
     needed_data = []
-    log = "전투 시작!"
+    Logger.init()
 
     manager = scene_manager
     fight_background = Image("assets/fight/fight_bg.jpg").scale(1920, 1080)
     unit_select = Image("assets/UI/unit_select.png").scale(128, 128)
     unit_select_red = Image("assets/UI/unit_select_red.png").scale(128, 128)
     skill_card = Image("assets/UI/empty_card.png").scale(70*(256/96), 256)
-    next_turn_button = Image("assets/UI/next.png").scale(256, 256).button(1800, 800, lambda: next_turn(), is_center=True)
+    next_turn_button = Image("assets/UI/next.png").scale(256, 256).button(1800, 800, on_click=set_enemy_turn, is_center=True)
     black_background = Image("assets/UI/black.png").scale(1920, 1080)
     black_background.image = black_background.image.convert_alpha()
     black_background.image.set_alpha(200)
@@ -72,51 +90,53 @@ def setup(scene_manager):
 
     for i in fight_data.ally:
         if i is not None:
-            i.initialize()
+            i.initialize(Logger)
+            i.used = False
     for i in fight_data.enemy:
         if i is not None:
-            i.initialize()
+            i.initialize(Logger)
+            i.used = False
 
     fight_data.turn = 0
+    create_buttons()
+
+def set_enemy_turn():
+    global state
+    state = State.EnemyTurn
+
+
+def create_buttons():
+    global ally_button_arr, enemy_button_arr, fight_data, skill_card
     for i in range(len(fight_data.ally)):
         if fight_data.ally[i] is not None:
             ally_i__image = fight_data.ally[i].image
             ally_i__image.image = ally_i__image.image.convert_alpha()
             ally_button_var = ally_i__image.scale(128, 128).button(i * 150 + 200, 540, is_center=True,
                                                                    on_click=lambda j=i: click_obj(
-                                                                                fight_data.ally[j]))
+                                                                       fight_data.ally[j]))
             ally_button_arr.append(ally_button_var)
             for j in range(len(fight_data.ally[i].skills)):
                 skills_j_ = fight_data.ally[i].skills[j]
                 skills_j_.button = skill_card.button(get_x(j, fight_data.ally[i].skills), 952, is_center=True,
-                                              on_click=lambda k=j: click_sk(k))
+                                                     on_click=lambda k=j: click_sk(k))
                 skills_j_.image = skills_j_.image.scale(68 * (256 / 96), 68 * (256 / 96))
             ally_button_arr[-1].loc = fight_data.ally[i]
-            fight_data.ally[i].used = False
         else:
             ally_button_arr.append(None)
-
     for i in range(len(fight_data.enemy)):
         if fight_data.enemy[i] is not None:
             i__image = fight_data.enemy[i].image
             i__image.image = i__image.image.convert_alpha()
             enemy_button_var = i__image.scale(128, 128).flip(True, False).button(i * 150 + 1270, 540,
-                                                                              is_center=True,
-                                                                              on_click=lambda
-                                                                                                   j=i: click_obj(
-                                                                                                   fight_data.enemy[j]))
+                                                                                 is_center=True,
+                                                                                 on_click=lambda
+                                                                                     j=i: click_obj(
+                                                                                     fight_data.enemy[j]))
             enemy_button_arr.append(enemy_button_var)
         else:
             enemy_button_arr.append(None)
 
-def next_turn():
-    global state
-    add_log("아군 턴 종료!")
-    cancel()
-    state = State.EnemyTurn
-    for i in fight_data.ally:
-        if i is not None:
-            i.used = False
+
 
 # 씬이 불러와진 상태일 때, 이벤트가 작동할 시 실행되는 메소드입니다.
 def handle_event(event):
@@ -184,7 +204,7 @@ def click_obj(i: Optional[Entity]):
         selected_unit.used = True
         if (target.need_data is Need.Any) or (target.need_data is Need.Self and i is selected_unit) or (target.need_data is Need.Ally and isinstance(i, Player)) or (target.need_data is Need.Enemy and isinstance(i, Monster)):
             result = target.activate(selected_unit, fight_data, i)
-            add_log(result)
+            Logger.add(result)
             cancel()
         else:
             selected_unit.used = False
@@ -192,12 +212,6 @@ def click_obj(i: Optional[Entity]):
 
     pass
 
-
-def add_log(result):
-    global log
-    if log is None:
-        log = ""
-    log += "\n" + result
 
 
 def click_sk(i: int):
@@ -209,34 +223,25 @@ def click_sk(i: int):
 
 # 씬이 불러와진 상태일 때, 각 프레임마다 실행되는 메소드입니다.
 def update():
-    global mouse_pos, state, log_output, ui
-    for i in range(len(fight_data.enemy)):
-        if fight_data.enemy[i] is None:
-            continue
-        if fight_data.enemy[i].hp_c <= 0:
-            add_log(fight_data.enemy[i].name + "이(가) 사망했다!")
-            fight_data.enemy[i] = None
-    if all(item is None for item in fight_data.enemy):
-        if state is not State.Fin:
-            add_log("승리했다!")
-            state = State.Fin
-            UIManager.activate('fight_end')
-    for i in range(len(fight_data.ally)):
-        if fight_data.ally[i] is None:
-            continue
-        if fight_data.ally[i].hp_c <= 0:
-            add_log(fight_data.ally[i].name + "이(가) 사망했다!")
-            fight_data.ally[i] = None
+    global mouse_pos, state, ui
+    death_check()
 
     if state is State.EnemyTurn:
-        for i in range(len(fight_data.enemy)):
-            if fight_data.enemy[i] is None:
-                continue
-            result = fight_data.enemy[i].action(fight_data)
-            add_log(result)
-        add_log("적군 턴 종료!")
-        state = State.NoPlayer
+        Logger.add("아군 턴 종료!")
+        cancel()
+        state = State.EnemyTurn
+        enemy_action()
+        Logger.add("적군 턴 종료!")
         fight_data.turn += 1
+        state = State.NoPlayer
+        Logger.add("현재 턴 : "+str(fight_data.turn))
+        for i in fight_data.ally:
+            if i is not None :
+                if i.stun_time < fight_data.turn:
+                    i.used = False
+                else:
+                    i.used = True
+
         for i in fight_data.ally:
             if i is None:
                 continue
@@ -244,18 +249,45 @@ def update():
             if result is None:
                 continue
             if len(result) > 0:
-                add_log(result)
+                Logger.add(result)
 
-    LOG_LENGTH = 15
-    log_output = [game_font.render(i, True, (0, 0, 0)) for i in log.splitlines()[-LOG_LENGTH:]]
+
+
+def enemy_action():
+    for i in range(len(fight_data.enemy)):
+        if fight_data.enemy[i] is None or fight_data.enemy[i].stun_time >= fight_data.turn:
+            continue
+        result = fight_data.enemy[i].action(fight_data)
+        Logger.add(result)
+
+
+def death_check():
+    global state
+    for i in range(len(fight_data.enemy)):
+        if fight_data.enemy[i] is None:
+            continue
+        if fight_data.enemy[i].hp_c <= 0:
+            Logger.add(fight_data.enemy[i].name + "이(가) 사망했다!")
+            fight_data.enemy[i] = None
+    if all(item is None for item in fight_data.enemy):
+        if state is not State.Fin:
+            Logger.add("승리했다!")
+            state = State.Fin
+            UIManager.activate('fight_end')
+    for i in range(len(fight_data.ally)):
+        if fight_data.ally[i] is None:
+            continue
+        if fight_data.ally[i].hp_c <= 0:
+            Logger.add(fight_data.ally[i].name + "이(가) 사망했다!")
+            fight_data.ally[i] = None
 
 
 # 씬이 불러와진 상태일 때, 각 프레임마다 update 메소드 뒤에 실행되는 메소드입니다.
 def draw(screen):
 
     fight_background.draw(screen, 0, 0)
-    for i in range(len(log_output)):
-        screen.blit(log_output[i], (0, i*30))
+    for i in range(len(Logger.log_output)):
+        screen.blit(Logger.log_output[i], (0, i*30))
 
     if not (state is State.NoPlayer or state is State.EnemyTurn) and isinstance(selected_unit, Player):
         skills_num = selected_unit.skills

@@ -11,7 +11,7 @@ class Need(Enum):
     Any = 3
 
 class Skill:
-    def __init__(self, sk_id, name, desc, src, on_enable: Callable[[Entity, FightData, Entity], str], need_data: Need):
+    def __init__(self, sk_id, name, desc, src, on_enable: Callable[[FightData, Entity], str], need_data: Need):
         self.on_enable = on_enable
         self.name = name
         self.desc = desc
