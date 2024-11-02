@@ -1,16 +1,16 @@
 from abc import abstractmethod
-
-from source.conf import project
 from util.Util import Image
 
 
 class Entity:
+    logger = None
 
     def __init__(self, name: str, src: str, hp: int, atk: int, lvl=1):
         """
 
         :rtype: object
         """
+        self.stun_time = 0
         self.atk = 0
         self.name = name
         self.src = src
@@ -21,6 +21,7 @@ class Entity:
         self.protect = 0
         self.lvl = lvl
         self.tag = []
+        self.used = False
 
     def damage(self, atk):
         self.hp_c -= max(atk - self.protect, 0)
@@ -41,8 +42,13 @@ class Entity:
     def turn(self, fight_data):
         return ""
 
-    def initialize(self):
+    def initialize(self, logger):
         self.tag = []
+        self.logger = logger
+
+    def stun(self, period: int):
+        self.stun_time = period
+        self.logger.add(self.name+"이(가) " +str(period)+" 턴까지 기절한다!")
 
 
 class Monster(Entity):
