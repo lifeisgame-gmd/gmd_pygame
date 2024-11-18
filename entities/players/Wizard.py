@@ -9,7 +9,9 @@ class Wizard(Player):
 
 
     def __init__(self):
-        super().__init__('마법사',"assets/player/Wizard.png", 60, 20) # 이름, 사진 경로, 공격력, 체력, 1
+        super().__init__('마법사',"assets/player/Wizard.png", 60, 20) # 이름, 사진 경로, 공격력, 체력
+        self.protect += 5
+        
 
 
     def fireattack(self, fight_data: FightData, additional_data: Entity):

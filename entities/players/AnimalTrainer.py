@@ -25,7 +25,7 @@ class Animal_Trainer(Player):
           else:
             del self.skills[1]
             del self.skills[2]          
-          self.skills.append(Skill('bite','물어!','지정한 상대 1명을 공격한다.',"assets/player/no_img",bite, Need.Enemy))
+          self.skills.append(Skill('bite','물어!','지정한 상대 1명을 공격한다.',"assets/player/no_img",self.bite, Need.Enemy))
           self.skills.append(Skill('scar_licking','상처핥기','스스로의 hp를 약간 회복한다.',"assets/player/no_img",licking, Need.self))
         elif R <= 95:
           self.animal = "호랑이"
@@ -75,10 +75,11 @@ class Animal_Trainer(Player):
       
     def growling(self, fight_data:FightData, additional_data: Entity):
       for i in range(0,4):
-        if target[i] ==
+        if target[i] == 0:
+          target[i] = additional_data
+          self.enemy_buff_time[i] = fight_data + 3
       self.original_enemy_atk = additional_data.atk
       additional_data.atk(additional_data.atk * (8/10) )
-      self.enemy_buff_time = fight_data.turn + 4
       return additional_data.name + "의 공격력을 " + additional_data.atk * (8/10) + "만큼 감소시켰다!"
     
     def attack(self, fight_data: FightData, additional_data: Entity):
@@ -92,7 +93,8 @@ class Animal_Trainer(Player):
     
     def turn(self, fight_data):
         global target
-        if self.enemy_buff_time == fight_data.turn and target is not None:
-            target.atk = target.atk_o
+        for i in range(0,4):
+          if self.enemy_buff_time[i] == fight_data.turn and target[i] != 0:
+            target[i].atk = target[i].atk_o
             self.enemy_buff_time = 0
         pass
