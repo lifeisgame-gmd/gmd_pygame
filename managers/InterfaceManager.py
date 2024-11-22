@@ -14,4 +14,5 @@ class UIManager:
     @staticmethod
     def activate(name: str):
         SceneManager.ui = UIManager.ui_list[name]
+        return UIManager.ui_list[name]
 

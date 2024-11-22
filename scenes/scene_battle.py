@@ -3,6 +3,8 @@ from typing import List, Optional
 
 import pygame
 
+from Interfaces.subordinates.TestUi import TestUi
+from SceneManager import SceneManager
 from managers.Entities import Monster, Entity, Player
 from managers.EntityManager import MonsterManager
 from managers.InterfaceManager import UIManager
@@ -74,7 +76,7 @@ def setup(scene_manager):
     black_background = Image("assets/UI/black.png").scale(1920, 1080)
     black_background.image = black_background.image.convert_alpha()
     black_background.image.set_alpha(200)
-    game_font = pygame.font.Font(r"assets\font\neodgm_code\neodgm_code.ttf", 30)
+    game_font = pygame.font.Font(r"assets/font/neodgm_code/neodgm_code.ttf", 30)
     ui = None
 
 
@@ -273,7 +275,7 @@ def death_check():
         if state is not State.Fin:
             Logger.add("승리했다!")
             state = State.Fin
-            UIManager.activate('fight_end')
+            SceneManager.ui = TestUi("승리했다! OO 골드 획득")
     for i in range(len(fight_data.ally)):
         if fight_data.ally[i] is None:
             continue
