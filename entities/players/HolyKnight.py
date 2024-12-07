@@ -22,7 +22,7 @@ class HolyKnight(Player):
         else:
           self.buff_time += fight_data.turn +3 #버프 중첩 막는 용도. 한 번 더 사용했을때 버프 시간만 늘어남.
     
-    def Ally_defend(self, fight_data, additional_data : Entity):
+    def ally_defend(self, fight_data, additional_data : Entity):
         additional_data.protect += self.hp_m * (2/10)
         return "성기사의 방어력이 "+ self.hp_m * (2/10)+  "만큼 증가했다!"
 
@@ -32,7 +32,7 @@ class HolyKnight(Player):
 
     skills = [
         Skill('holyknight_atk', '공격', '지정한 적을 공격합니다.', "assets/fight/card1.jpg", attack, Need.Enemy),
-        Skill('holyknight_guard', '수호', '지정한 아군에게 보호막 증가.', "assets/player/no_img.png", Ally_defend, Need.Ally),
+        Skill('holyknight_guard', '수호', '지정한 아군에게 보호막 증가.', "assets/player/no_img.png", ally_defend, Need.Ally),
         Skill('holyknight_buff', '신의 방패', '방어 증가.', "assets/fight/card1.jpg", buff, Need.Self)
     ]
 

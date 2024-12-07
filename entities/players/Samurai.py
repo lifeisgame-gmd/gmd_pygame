@@ -12,8 +12,8 @@ class Samurai(Player):
 
 
     def punch(self, fight_data: FightData, additional_data: Entity):
-    additional_data.damage(7)
-    return "검사가 적군을 7의 데미지로 공격했다"
+        additional_data.damage(7)
+        return "검사가 적군을 7의 데미지로 공격했다"
 
     def attack(self, fight_data: FightData, additional_data: Entity):
         for samu_atk in range(3):

@@ -25,6 +25,7 @@ class Knight(Player):
     ]
 
     def turn(self, fight_data):
+        pass
         
 
 

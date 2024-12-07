@@ -20,7 +20,7 @@ class Stone(Player):
         return "적군이 돌맹이를 밟고 넘어져 10의 데미지를 받았다"
         
     skills = [
-        Skill('stone_atk', '가만히 있기' ,'지정한 적이 돌맹이를 밟습니다.', 'assets/fight/card1/jpg', Need.Enemy) #Need - Enemy, Ally, Self, Any
+        Skill('stone_atk', '가만히 있기' ,'지정한 적이 돌맹이를 밟습니다.', 'assets/fight/card1/jpg', Need.Enemy), #Need - Enemy, Ally, Self, Any
         Skill('stone_def', '돌맹이는 단단해', '단단합니다.', "assets/player/no_img.png", defend, Need.Self)
     ]
 

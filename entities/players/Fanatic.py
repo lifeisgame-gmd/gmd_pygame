@@ -27,14 +27,14 @@ class Fanatic(Player):
         additional_data.damage(self.atk)
         return additional_data.name + "을(를) " + str(self.atk)+"의 데미지로 공격했다!"
 
-    def heal(self, fight_data: FightData, additional_data: Entity):
+    def heal_sk(self, fight_data: FightData, additional_data: Entity):
         additional_data.hp_c = min(additional_data.hp_c + self.atk + 5, additional_data.hp_m)
         return additional_data.name + "을(를) " + str(self.atk)+"만큼 회복시켰다!"
 
     skills = [
         Skill('fanatic_Atk', '신을 맞이하라', '지정한 적에게 25% 확률로 강력한 공격을 합니다.', "assets/fight/card1.jpg", attack, Need.Enemy),
         Skill('fanatic_Def', '그날이 오고있다', '일정 턴 동안 자신의 공격력 강화', "assets/player/no_img.png", buff, Need.Self),
-        Skill('fanatic_Heal', '신의 축복일지니!', '자신의 hp를 회복시킨다.', "assets/player/no_img.png", heal, Need.Self)
+        Skill('fanatic_Heal', '신의 축복일지니!', '자신의 hp를 회복시킨다.', "assets/player/no_img.png", heal_sk, Need.Self)
     ]
 
     def turn(self, fight_data):

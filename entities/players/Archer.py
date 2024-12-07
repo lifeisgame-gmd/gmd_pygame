@@ -1,3 +1,4 @@
+import random
 from typing import Any
 
 from managers.Entities import Player, Entity
@@ -18,10 +19,10 @@ class Archer(Player):
         additional_data.damege(20)
         additional_data.damege(20)
         additional_data.damege(20)
-        return additional_data.name + "을(를) 20의 데미지로 공격했다!" + "\n" + additional_data.name "을(를) 20의 데미지로 공격했다!"  + "\n" + additional_data.name "을(를) 20의 데미지로 공격했다!"
+        return additional_data.name + "을(를) 20의 데미지로 공격했다!" + "\n" + additional_data.name+ "을(를) 20의 데미지로 공격했다!"  + "\n" + additional_data.name+ "을(를) 20의 데미지로 공격했다!"
 
     def attention(self, fight_data:FightData, additional_data : Entity):
-        
+        pass
 
 
     def buff(self, fight_data, additional_data):
@@ -41,17 +42,10 @@ class Archer(Player):
         self.current_turn = fight_data.turn
 
 
-
-        
-
-
-
-
-
     skills = [
         Skill('Archer_atk', '고속 연사', '지정한 적을 3개의 화살로 공격합니다.', "assets/fight/card1.jpg", attack, Need.Enemy),
-        Skill('Archer_buff', '방어', '해당 캐릭터의 방어력을 높입니다.', "assets/player/no_lmg.png", buff, Need.Self)
+        Skill('Archer_buff', '방어', '해당 캐릭터의 방어력을 높입니다.', "assets/player/no_lmg.png", buff, Need.Self),
         Skill('Archer_shield', '공격방어', '30%의 확률로 적의 공격을 상쇄합니다.', "assets/player/no_img.png", shield, Need.Self)
-
+]
 
         

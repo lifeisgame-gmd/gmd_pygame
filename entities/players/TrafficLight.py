@@ -15,7 +15,7 @@ class TrafficLight(Player):
         return "신호등의 방어력이 5 증가했다!"
 
     def stun_sk(self, fight_data: FightData, additional_data):
-        additional_data.stun(self.atk)      #스턴!!        #스턴 넣기!!!!!
+        additional_data.stun_sk(self.atk)      #스턴!!        #스턴 넣기!!!!!
         return "신호가 빨간불이 되었다!"
 
     def attack(self, fight_data: FightData, additional_data: Entity):

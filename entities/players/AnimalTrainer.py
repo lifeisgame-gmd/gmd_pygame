@@ -8,7 +8,7 @@ from util.Skill import Skill, Need
 global target
 target = [0,0,0,0]
 
-class Animal_Trainer(Player):
+class AnimalTrainer(Player):
 
     def __init__(self):
         super().__init__('동물조련사',"assets/player/cat.png", 2, 4)

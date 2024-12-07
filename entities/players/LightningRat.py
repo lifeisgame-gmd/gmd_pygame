@@ -5,7 +5,7 @@ from util.FightData import FightData
 from util.Skill import Skill, Need
 
 
-class Lightningrat(Player):
+class LightningRat(Player):
 
     def __init__(self):
         super().__init__('전기쥐',"assets/player/cat.png", 10, 10)
