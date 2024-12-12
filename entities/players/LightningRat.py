@@ -8,7 +8,7 @@ from util.Skill import Skill, Need
 class LightningRat(Player):
 
     def __init__(self):
-        super().__init__('전기쥐',"assets/player/cat.png", 10, 10)
+        super().__init__('전기쥐',"assets/player/cat.png", 10, 10, 2)
 
 
     def defend(self, fight_data, additional_data):

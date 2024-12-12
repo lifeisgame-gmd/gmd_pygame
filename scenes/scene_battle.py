@@ -58,6 +58,7 @@ def setup(scene_manager):
     global log
     global game_font
     global ui
+    global map_data
 
     mouse_pos = (0, 0)
     selected_unit = None
@@ -264,7 +265,7 @@ def enemy_action():
 
 
 def death_check():
-    global state
+    global state, map_data, manager
     for i in range(len(fight_data.enemy)):
         if fight_data.enemy[i] is None:
             continue
@@ -275,13 +276,17 @@ def death_check():
         if state is not State.Fin:
             Logger.add("승리했다!")
             state = State.Fin
-            SceneManager.ui = TestUi("승리했다! OO 골드 획득")
+            SceneManager.ui = TestUi("승리했다! "+str(map_data['award']['gold'])+" 골드 획득", manager)
     for i in range(len(fight_data.ally)):
         if fight_data.ally[i] is None:
             continue
         if fight_data.ally[i].hp_c <= 0:
             Logger.add(fight_data.ally[i].name + "이(가) 사망했다!")
             fight_data.ally[i] = None
+    if all(item is None for item in fight_data.ally):
+        if state is not State.Fin:
+            Logger.add("패배했다!")
+            state = State.Fin
 
 
 # 씬이 불러와진 상태일 때, 각 프레임마다 update 메소드 뒤에 실행되는 메소드입니다.

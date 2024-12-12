@@ -9,7 +9,7 @@ class Fanatic(Player):
 
 
     def __init__(self):
-        super().__init__('광신도',"assets/player/Priest.png", 2, 3) #공,체,1k
+        super().__init__('광신도',"assets/player/Priest.png", 2, 3, 3) #공,체,1k
         self.original_atk = self.atk
         self.buff_time = None
 

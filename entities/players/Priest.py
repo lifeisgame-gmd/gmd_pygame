@@ -8,7 +8,7 @@ from util.Skill import Skill, Need
 class Priest(Player):
 
     def __init__(self):
-        super().__init__('성직자',"assets/player/Priest.png", 2, 3) #공,체,1
+        super().__init__('성직자',"assets/player/Priest.png", 2, 3, 2) #공,체,1
 
     def defend(self, fight_data, additional_data):
         self.protect += 3

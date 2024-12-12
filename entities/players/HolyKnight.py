@@ -8,7 +8,7 @@ from util.Skill import Skill, Need
 class HolyKnight(Player):
 
     def __init__(self):
-        super().__init__('성기사',"assets/player/cat.png", 2, 12)
+        super().__init__('성기사',"assets/player/cat.png", 2, 12, 2)
         self.protect += 3
         self.original_protect = self.protect
         self.buff_time = None

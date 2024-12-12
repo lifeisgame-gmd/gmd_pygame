@@ -8,7 +8,7 @@ class Dog(Player):
 
 
     def __init__(self):
-        super().__init__('강아지',"assets/player/dog.png", 10, 4) # 이름, 사진 경로, 공격력, 체력, 1
+        super().__init__('강아지',"assets/player/dog.png", 10, 4, 1) # 이름, 사진 경로, 공격력, 체력, 1
 
 
     def punch(self, fight_data: FightData, additional_data: Entity):

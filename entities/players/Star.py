@@ -8,7 +8,7 @@ class Star(Player):
     
 
     def __init__(self):
-        super().__init__('오각별',"assets/player/cat.png", 10, 4) # 이름, 캐릭터 사진, 공격력, 체력, 1
+        super().__init__('오각별',"assets/player/cat.png", 10, 4, 1) # 이름, 캐릭터 사진, 공격력, 체력, 1
 
     def starpower(self, fight_data: FightData, additional_data: Entity):
         additional_data.hp_c = 0

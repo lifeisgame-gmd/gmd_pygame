@@ -8,7 +8,7 @@ class Batman(Player):
     
 
     def __init__(self):
-        super().__init__('배트맨',"assets/player/dog.png", 15, 10) # 이름, 사진 경로, 공격력, 체력, 1
+        super().__init__('배트맨',"assets/player/dog.png", 15, 10, 1) # 이름, 사진 경로, 공격력, 체력, 1
 
 
     def punch(self, fight_data: FightData, additional_data: Entity):

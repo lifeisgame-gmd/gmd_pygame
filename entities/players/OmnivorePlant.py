@@ -19,6 +19,6 @@ class OmnivorePlant(Player):
 
     skills = [
         Skill('jobsikplant_atk', '깨물기', '지정한 적을 깨물어서 공격합니다.', "assets/fight/card1.jpg", attack, Need.Enemy),
-        Skill('jobsikplant_def', '광합성 치유', '햇빛을 받고 잡식식물이 회복합니다.', "assets/player/no_img.png", heal_sk(), Need.Self)
+        Skill('jobsikplant_def', '광합성 치유', '햇빛을 받고 잡식식물이 회복합니다.', "assets/player/no_img.png", heal_sk, Need.Self)
     ]
 

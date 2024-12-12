@@ -8,7 +8,7 @@ from util.Skill import Skill, Need
 class MyakMyak(Player):
 
     def __init__(self):
-        super().__init__('먁먁',"assets/player/myakmyak.png", 2, 12)
+        super().__init__('먁먁',"assets/player/myakmyak.png", 2, 12, 1000)
         self.protect += 3
         self.original_protect = self.protect
         self.buff_time = None

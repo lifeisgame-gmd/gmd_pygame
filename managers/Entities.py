@@ -62,6 +62,11 @@ class Monster(Entity):
 
 
 class Player(Entity):
+
+    def __init__(self, name: str, src: str, hp: int, atk: int, rank: int, lvl=1):
+        self.rank = rank
+        super().__init__(name, src, hp, atk, lvl)
+
     skills = []
     def load_image(self):
         super().load_image()

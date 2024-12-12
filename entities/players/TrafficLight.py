@@ -7,7 +7,7 @@ from util.Skill import Skill, Need
 class TrafficLight(Player):
 
     def __init__(self):
-        super().__init__('신호등',"assets/player/shd.png", 10, 4)
+        super().__init__('신호등',"assets/player/shd.png", 10, 4, 3)
 
 
     def defend(self, fight_data, additional_data):

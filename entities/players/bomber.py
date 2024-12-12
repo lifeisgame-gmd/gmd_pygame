@@ -8,7 +8,7 @@ from util.Skill import Skill, Need
 class Bomber(Player):
 
     def __init__(self):
-        super().__init__('폭탄병',"assets/player/cat.png", 10, 10)
+        super().__init__('폭탄병',"assets/player/cat.png", 10, 10, 2)
 
 
     def attack(self, fight_data: FightData, additional_data: Entity):

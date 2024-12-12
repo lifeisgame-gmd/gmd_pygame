@@ -8,7 +8,7 @@ from util.Skill import Skill, Need
 class Samurai(Player):
 
     def __init__(self):
-        super().__init__('검사',"assets/player/cat.png", 7, 5)
+        super().__init__('검사',"assets/player/cat.png", 7, 5, 3)
 
 
     def punch(self, fight_data: FightData, additional_data: Entity):

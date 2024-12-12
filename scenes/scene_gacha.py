@@ -57,3 +57,6 @@ def draw(screen):
 # 다른 씬으로 넘어갈 때 실행되는 메소드입니다.
 def cleanup():
     pass
+
+def gacha():
+    PlayerManager.arr

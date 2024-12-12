@@ -4,7 +4,7 @@ from util.Skill import Skill, Need
 
 class NewPlayer(Player):
     def __init__(self):
-        super().__init__('별', "assets/player/NewPlayer.png", 10, 2)
+        super().__init__('별', "assets/player/NewPlayer.png", 10, 2, 1)
 
     def skill1(self, fight_data, additional_data):
         additional_data.damage(self.atk)

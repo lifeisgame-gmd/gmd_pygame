@@ -11,7 +11,7 @@ target = [0,0,0,0]
 class AnimalTrainer(Player):
 
     def __init__(self):
-        super().__init__('동물조련사',"assets/player/cat.png", 2, 4)
+        super().__init__('동물조련사',"assets/player/cat.png", 2, 4, 1)
         self.animal = ""
         self.enemy_buff_time = [0,0,0,0]
 
