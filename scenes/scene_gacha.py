@@ -37,12 +37,16 @@ def setup(scene_manager):
     greeting_text = game_font.render("여관", True,(0,0,0)) #("텍스트",안티에일어싱 여부,(R,G,B) 또는 색깔 대문자로 써 넣기.)
 
     render_text()
+    render_party()
 
 # 씬이 불러와진 상태일 때, 이벤트가 작동할 시 실행되는 메소드입니다.
 def handle_event(event):
+    global party_button
     if event.type == pygame.MOUSEBUTTONDOWN:
         back_button.check_click(event.pos)
         recruitment_button.check_click(event.pos)
+        for e in party_button:
+            e.check_click(event.pos)
     if event.type == pygame.MOUSEMOTION:
         global mouse_pos
         mouse_pos = event.pos
@@ -53,7 +57,7 @@ def update():
 
 # 씬이 불러와진 상태일 때, 각 프레임마다 update 메소드 뒤에 실행되는 메소드입니다.
 def draw(screen):
-    global gacha_result, text_ui, gold_usage
+    global gacha_result, text_ui, gold_usage, party_button
     screen.blit(background,(0,0))
     back_button.draw(screen)
     recruitment_button.draw(screen)
@@ -62,7 +66,9 @@ def draw(screen):
     pygame.draw.ellipse(screen, (0,0,255),[760,100,500,300]) #타원 그리기 / 대충 몬스터 그려봄 ㅇㅇ.
     pygame.draw.rect(screen, (255,255,255),[1450, 10, 450, 100]) #돈/ 재화 띄우는 곳
     for i in range(4):
-        pygame.draw.rect(screen, (255,255,255),[740 + 100*i, 700, 110, 110], 2) #돈/ 재화 띄우는 곳
+        pygame.draw.rect(screen, (255,255,255),[740 + 110*i, 700, 100, 100], 2) #돈/ 재화 띄우는 곳
+    for e in party_button:
+        e.draw(screen)
     screen.blit(text_ui,(1450,10))
     screen.blit(gold_usage, (1000, 500))
     if gacha_result is not None:
@@ -77,7 +83,7 @@ def cleanup():
 
 def gacha():
     if PlayerData.gold < 10:
-        return;
+        return
     PlayerData.gold -= 10
     render_text()
     st = 1
@@ -100,7 +106,6 @@ def render_text():
 
 def render_party():
     global party_button
-    from typing import List
 
     party_button = []
 
@@ -111,7 +116,7 @@ def render_party():
 
 def button_click():
     global mouse_pos, gacha_result
-    i = (mouse_pos[0] - 600)/100
+    i: int = (mouse_pos[0] - 600)/100
     if gacha_result is not None:
         PlayerData.party[i] = gacha_result
         gacha_result = None
