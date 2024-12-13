@@ -102,7 +102,7 @@ def render_party():
     global party_button
     from typing import List
 
-    party_button: List[Player] = []
+    party_button = []
 
     i = 0
     for e in PlayerData.party:

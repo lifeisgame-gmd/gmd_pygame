@@ -8,7 +8,7 @@ from util.Skill import Skill, Need
 class CloseCombatant(Player):
 
     def __init__(self):
-        super().__init__('근접전투원', "assests/player/closecombantant.png", 20,65, 2)
+        super().__init__('근접전투원', "assets/player/closecombatant.png", 20,65, 2)
 
 
     def neckattack(self, fight_data: FightData, additional_data: Entity):

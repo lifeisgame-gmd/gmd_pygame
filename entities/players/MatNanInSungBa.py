@@ -8,7 +8,7 @@ from util.Skill import Skill, Need
 class MatNanInSungBa(Player):
 
     def __init__(self):
-        super().__init__('맛난인성봐',"assets/player/cat.png", 1000, 1000, 1000)
+        super().__init__('맛난인성봐',"assets/player/mat.png", 1000, 1000, 1000)
 
     def stun_sk(self, fight_data: FightData, additional_data: Entity):
         additional_data.damage(self.atk)
@@ -27,7 +27,7 @@ class MatNanInSungBa(Player):
         return additional_data.name + "을(를) " + str(self.atk)+"의 데미지로 공격했다!"
 
     skills = [
-        Skill('matnaninsungba_atk1', '멈춰!', '모든 적을 기절시킵니다', "assets/player/loli.jpg", attack, Need.Enemy),
+            Skill('matnaninsungba_atk1', '멈춰!', '모든 적을 기절시킵니다', "assets/player/loli.jpg", attack, Need.Enemy),
         Skill('Matnaninsungba_atk2', '냥냥 방어', '폭탄들 던져 1명에게 공격력 만큼의 데미지를 준다.', "assets/player/no_img.png", stun_sk, Need.Enemy)
     ]
 

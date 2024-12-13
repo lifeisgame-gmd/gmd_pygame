@@ -8,7 +8,7 @@ from util.Skill import Skill, Need
 class Bomber(Player):
 
     def __init__(self):
-        super().__init__('폭탄병',"assets/player/cat.png", 10, 10, 2)
+        super().__init__('폭탄병',"assets/player/bomber.png", 10, 10, 2)
 
 
     def attack(self, fight_data: FightData, additional_data: Entity):
@@ -25,12 +25,12 @@ class Bomber(Player):
         return "폭탄을 던져 적무리에게" + str(self.atk)+ "데미지를 줬다"
        
 
-    def attack(self, fight_data: FightData, additional_data: Entity):
+    def ranged_attack(self, fight_data: FightData, additional_data: Entity):
         additional_data.damage(self.atk)
         return additional_data.name + "을(를) " + str(self.atk)+"의 데미지로 공격했다!"
 
     skills = [
         Skill('bomber_atk1', '냥냥 펀치', '지정한 적을 공격합니다.', "assets/player/loli.jpg", attack, Need.Enemy),
-        Skill('bomber_atk2', '냥냥 방어', '폭탄들 던져 1명에게 공격력 만큼의 데미지를 준다.', "assets/player/no_img.png", attack, Need.Enemy)
+        Skill('bomber_atk2', '냥냥 방어', '폭탄들 던져 1명에게 공격력 만큼의 데미지를 준다.', "assets/player/no_img.png", ranged_attack, Need.Enemy)
     ]
 

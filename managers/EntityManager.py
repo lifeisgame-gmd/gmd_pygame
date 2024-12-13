@@ -19,7 +19,6 @@ from entities.players.OmnivorePlant import OmnivorePlant
 from entities.players.Potioner import Potioner
 from entities.players.Priest import Priest
 from entities.players.Samurai import Samurai
-from entities.players.Star import Star
 from entities.players.Stone import Stone
 from entities.players.TrafficLight import TrafficLight
 from entities.players.Wizard import Wizard
@@ -61,7 +60,6 @@ class PlayerManager:
         PlayerManager.arr['Potioner'] = Potioner()
         PlayerManager.arr['Priest'] = Priest()
         PlayerManager.arr['Samurai'] = Samurai()
-        PlayerManager.arr['Star'] = Star()
         PlayerManager.arr['Stone'] = Stone()
         PlayerManager.arr['TrafficLight'] = TrafficLight()
         PlayerManager.arr['Wizard'] = Wizard()

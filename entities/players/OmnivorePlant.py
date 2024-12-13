@@ -6,7 +6,7 @@ from util.Skill import Skill, Need
 class OmnivorePlant(Player):
 
     def __init__(self):
-        super().__init__('잡식식물',"assets/player/cat.png", 7, 5, 1)
+        super().__init__('잡식식물',"assets/player/plant.png", 7, 5, 1)
 
 
     def heal_sk(self, fight_data, additional_data: Entity):

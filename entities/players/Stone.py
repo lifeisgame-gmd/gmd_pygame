@@ -8,7 +8,7 @@ class Stone(Player):
 
 
     def __init__(self):
-        super().__init__('돌맹이',"assets/player/dog.png", 4, 35, 1) # 이름, 사진 경로, 공격력, 체력, 1
+        super().__init__('돌맹이',"assets/player/stone.png", 4, 35, 1) # 이름, 사진 경로, 공격력, 체력, 1
 
 
     def defend(self, fight_data: FightData, additional_data: Entity):

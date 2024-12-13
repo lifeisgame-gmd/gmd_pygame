@@ -45,7 +45,7 @@ class Archer(Player):
 
     skills = [
         Skill('Archer_atk', '고속 연사', '지정한 적을 3개의 화살로 공격합니다.', "assets/fight/card1.jpg", attack, Need.Enemy),
-        Skill('Archer_buff', '방어', '해당 캐릭터의 방어력을 높입니다.', "assets/player/no_lmg.png", buff, Need.Self),
+        Skill('Archer_buff', '방어', '해당 캐릭터의 방어력을 높입니다.', "assets/player/no_img.png", buff, Need.Self),
         Skill('Archer_shield', '공격방어', '30%의 확률로 적의 공격을 상쇄합니다.', "assets/player/no_img.png", shield, Need.Self)
 ]
 
