@@ -9,7 +9,7 @@ class DarkPriest(Monster):
         super().__init__("타락 성기사", "assets/player/loli/png", 200, 20)
 
     def action(self, fight_data: FightData):
-        if fight_data.turn % 2 == 0:
+        if self.hp_c < 100:
             hightest: Optional[Player] = None
             for e in fight_data.ally:
                 if e is None:

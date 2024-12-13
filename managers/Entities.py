@@ -31,9 +31,9 @@ class Entity:
 
     def lvl_up(self, lvl: int):
         self.lvl += lvl
-        self.hp_c += self.hp_o * self.lvl - self.hp_m
-        self.hp_m = self.hp_o * self.lvl
-        self.atk = self.atk_o * self.lvl
+        self.hp_c += self.hp_o * 0.1
+        self.hp_m = self.hp_o * (1 + self.lvl * 0.1)
+        self.atk = self.atk_o * (1 + self.lvl * 0.1)
         return self
 
     def load_image(self):

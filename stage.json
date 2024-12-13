@@ -11,6 +11,36 @@
         "gold": 10,
         "exp": 20
       }
+    },
+    {
+      "enemies": [{
+        "id": "dragon",
+        "lvl": 2
+      }],
+      "award": {
+        "gold": 30,
+        "exp": 20
+      }
+    },
+    {},
+    {
+      "enemies": [{
+        "id": "dragon",
+        "lvl": 5
+      },{
+        "id": "dragon",
+        "lvl": 5
+      },{
+        "id": "dragon",
+        "lvl": 5
+      },{
+        "id": "dragon",
+        "lvl": 5
+      }],
+      "award": {
+        "gold": 30,
+        "exp": 20
+      }
     }
   ]
 }

@@ -22,7 +22,7 @@ class Dragon(Monster):
                 return "드래곤이 브레스를 뿜어서 " + fight_data[i].name +", "+ fight_data[i-1].name +"에게 "+ str(self.atk)+"데미지를 줬다"
     def action(self, fight_data: FightData):
             e : Optional[Player]
-            for e in reverse(fight_data.ally):
+            for e in reversed(fight_data.ally):
                 if e is None:
                     continue
                 e.damage(self.atk)

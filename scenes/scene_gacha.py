@@ -96,7 +96,7 @@ def gacha():
         if player.rank <= st:
             target.append(player)
     global gacha_result
-    gacha_result = target[random.randint(0, len(target) - 1)]
+    gacha_result = PlayerManager.get(target[random.randint(0, len(target) - 1)].name, 1)
 
 def render_text():
     global text_ui, gold_usage

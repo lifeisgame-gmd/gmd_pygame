@@ -5,6 +5,7 @@ import pygame
 
 from Interfaces.subordinates.TestUi import TestUi
 from SceneManager import SceneManager
+from managers import PlayerManager
 from managers.Entities import Monster, Entity, Player
 from managers.EntityManager import MonsterManager
 from managers.InterfaceManager import UIManager
@@ -277,6 +278,8 @@ def death_check():
             Logger.add("승리했다!")
             state = State.Fin
             SceneManager.ui = TestUi("승리했다! "+str(map_data['award']['gold'])+" 골드 획득", manager)
+            for e in PlayerData.party:
+                e.lvl_up(1)
     for i in range(len(fight_data.ally)):
         if fight_data.ally[i] is None:
             continue
@@ -310,15 +313,20 @@ def draw(screen):
         unit_select.draw(screen, x, 600, is_center=True)
     for i in range(len(ally_button_arr)):
         if fight_data.ally[i] is not None:
+            fight_data.ally[i] : Player
             if ally_button_arr[i].loc.used:
                 ally_button_arr[i].image.set_alpha(200)
             else:
                 ally_button_arr[i].image.set_alpha(255)
             ally_button_arr[i].draw(screen)
+            pygame.draw.rect(screen, (255, 0, 0), [i * 150 + 210, 700, 130, 20])
+            pygame.draw.rect(screen, (0, 255, 0), [i * 150 + 210, 700, int((fight_data.ally[i].hp_c / fight_data.ally[i].hp_m)* 130), 20])
 
     for i in range(len(enemy_button_arr)):
         if fight_data.enemy[i] is not None:
             enemy_button_arr[i].draw(screen)
+            pygame.draw.rect(screen, (255, 0, 0), [i * 150 + 210, 700, 130, 20])
+            pygame.draw.rect(screen, (0, 255, 0), [i * 150 + 210, 700, int((fight_data.enemy[i].hp_c / fight_data.enemy[i].hp_m)* 130), 20])
 
     next_turn_button.draw(screen)
     if state is State.SkillSelected:
