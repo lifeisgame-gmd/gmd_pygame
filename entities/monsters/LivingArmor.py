@@ -14,7 +14,7 @@ class LivingArmor(Monster):
 
     def action(self, fight_data: FightData):
         rand = random.randrange(1, 10)
-        if(rand == 1):
+        if(rand < 4):
             self.protect += 1
             return "리빙아머의 방어력이 1 상승했다!"
         else:

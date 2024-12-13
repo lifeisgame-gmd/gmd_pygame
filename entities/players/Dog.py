@@ -16,7 +16,7 @@ class Dog(Player):
         return "멍멍이가 적군을 10의 데미지로 공격했다"
         
     skills = [
-        Skill('dog_punch', '멍멍 펀치!' ,'지정한 적을 공격합니다.', 'assets/fight/card1/jpg', punch, Need.Enemy) #Need - Enemy, Ally, Self, Any
+        Skill('dog_punch', '멍멍 펀치!' ,'지정한 적을 공격합니다.', 'assets/fight/card1.jpg', punch, Need.Enemy) #Need - Enemy, Ally, Self, Any
     ]
 
 

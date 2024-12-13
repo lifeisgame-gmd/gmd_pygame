@@ -1,5 +1,3 @@
-from pydoc import plain
-
 import pygame.event
 
 from Interfaces.interface import Interface

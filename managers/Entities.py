@@ -66,9 +66,11 @@ class Player(Entity):
     def __init__(self, name: str, src: str, hp: int, atk: int, rank: int, lvl=1):
         self.rank = rank
         super().__init__(name, src, hp, atk, lvl)
+        self.load_image()
 
     skills = []
     def load_image(self):
+        print(self.name)
         super().load_image()
         for i in range(len(self.skills)):
             self.skills[i].image = Image(self.skills[i].src)

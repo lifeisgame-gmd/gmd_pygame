@@ -16,7 +16,7 @@ class Batman(Player):
         return "배트맨이 적군을 10의 데미지로 공격했다"
         
     skills = [
-        Skill('dog_punch', '방망이 휘두르기' ,'지정한 적에게 방망이를 휘둘러 공격합니다.', 'assets/fight/card1/jpg', punch, Need.Enemy) #Need - Enemy, Ally, Self, Any
+        Skill('dog_punch', '방망이 휘두르기' ,'지정한 적에게 방망이를 휘둘러 공격합니다.', 'assets/fight/card1.jpg', punch, Need.Enemy) #Need - Enemy, Ally, Self, Any
     ]
 
 
