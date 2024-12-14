@@ -17,7 +17,7 @@ def setup(scene_manager: SceneManager):
     MapManager.init()
     UIManager.init(scene_manager)
 
-    #PlayerData.debug_init()
+    PlayerData.debug_init()
 
 # 씬이 불러와진 상태일 때, 이벤트가 작동할 시 실행되는 메소드입니다.
 def handle_event(event):

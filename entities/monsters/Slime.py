@@ -5,7 +5,7 @@ from util.FightData import FightData
 class Slime(Monster):
 
     def __init__(self):
-        super().__init__("슬라임", "assets/monster/slime.png", 1, 1)
+        super().__init__("슬라임", "assets/monster/slime.png", 20, 1)
 
     def action(self, fight_data: FightData):
 

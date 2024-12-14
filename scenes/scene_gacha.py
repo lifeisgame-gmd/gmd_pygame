@@ -72,6 +72,7 @@ def draw(screen):
     screen.blit(text_ui,(1450,10))
     screen.blit(gold_usage, (1000, 500))
     if gacha_result is not None:
+        gacha_result.load_image()
         image: Image = gacha_result.image
         image.scale(128, 128).draw(screen, 1010, 250, True)
 
@@ -96,7 +97,7 @@ def gacha():
         if player.rank <= st:
             target.append(player)
     global gacha_result
-    gacha_result = PlayerManager.get(target[random.randint(0, len(target) - 1)].name, 1)
+    gacha_result = target[random.randint(0, len(target) - 1)]
 
 def render_text():
     global text_ui, gold_usage
@@ -112,7 +113,9 @@ def render_party():
     i = 0
     for e in PlayerData.party:
         i += 1
-        party_button.append(e.image.scale(100, 100).button(630 + 110*i, 700, lambda: button_click()))
+        if e is None:
+            continue
+        party_button.append(e.image.scale(100, 100).button(630 + 110*i, 700, on_click=lambda: button_click()))
 
 def button_click():
     global mouse_pos, gacha_result

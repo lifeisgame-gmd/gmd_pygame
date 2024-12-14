@@ -26,6 +26,6 @@ class Dragon(Monster):
                 if e is None:
                     continue
                 e.damage(self.atk)
-                return e.name +"을(를) "+self.atk+"의 데미지로 공격했다!"
+                return e.name +"을(를) "+str(self.atk)+"의 데미지로 공격했다!"
                 
                 

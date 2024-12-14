@@ -12,8 +12,8 @@ class PlayerData:
 
     @staticmethod
     def debug_init():
-        PlayerData.player_have['Cat'] = PlayerManager.get('Cat', 1)
-        PlayerData.party[0] = PlayerManager.get('Cat', 1)
-        PlayerData.party[1] = PlayerManager.get('Cat', 1)
-        PlayerData.party[3] = PlayerManager.get('Cat', 1)
+        PlayerData.player_have[Cat().name] = PlayerManager.get(Cat().name, 1)
+        PlayerData.party[0] = PlayerManager.get(Cat().name, 1)
+        PlayerData.party[1] = PlayerManager.get(Cat().name, 1)
+        PlayerData.party[3] = PlayerManager.get(Cat().name, 1)
 

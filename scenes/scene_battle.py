@@ -279,7 +279,8 @@ def death_check():
             state = State.Fin
             SceneManager.ui = TestUi("승리했다! "+str(map_data['award']['gold'])+" 골드 획득", manager)
             for e in PlayerData.party:
-                e.lvl_up(1)
+                if e is not None:
+                    e.lvl_up(1)
     for i in range(len(fight_data.ally)):
         if fight_data.ally[i] is None:
             continue
@@ -325,8 +326,8 @@ def draw(screen):
     for i in range(len(enemy_button_arr)):
         if fight_data.enemy[i] is not None:
             enemy_button_arr[i].draw(screen)
-            pygame.draw.rect(screen, (255, 0, 0), [i * 150 + 210, 700, 130, 20])
-            pygame.draw.rect(screen, (0, 255, 0), [i * 150 + 210, 700, int((fight_data.enemy[i].hp_c / fight_data.enemy[i].hp_m)* 130), 20])
+            pygame.draw.rect(screen, (255, 0, 0), [i * 150 + 1200, 700, 130, 20])
+            pygame.draw.rect(screen, (0, 255, 0), [i * 150 + 1200, 700, int((fight_data.enemy[i].hp_c / fight_data.enemy[i].hp_m)* 130), 20])
 
     next_turn_button.draw(screen)
     if state is State.SkillSelected:

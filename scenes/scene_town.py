@@ -15,8 +15,8 @@ Town Scene
 
 def map_func():
 
-    if all(item is None for item in PlayerData.party):
-        UIManager.activate("map_move_warning")
+    #if all(item is None for item in PlayerData.party):
+    #    UIManager.activate("map_move_warning")
         
     manager.change_scene('map')
     managers.MapManager.cur += 1
