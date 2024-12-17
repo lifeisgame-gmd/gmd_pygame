@@ -1,4 +1,5 @@
 import pygame
+from util.Button import Button
 
 """
 Example Scene
@@ -12,6 +13,7 @@ def setup(scene_manager):
     global quest_1
     global quest_2
     global quest_3
+    global back_button
     manager = scene_manager
 
     background = pygame.image.load("assets/background.jpeg") #배경
@@ -24,6 +26,9 @@ def setup(scene_manager):
     quest_2 = pygame.transform.scale(quest_2_image, (300, 500))
     quest_3_image = pygame.image.load("assets/smithy.png")#
     quest_3 = pygame.transform.scale(quest_3_image, (300, 500))
+    Button_image = pygame.image.load("assets/button.png")
+    Button_image = pygame.transform.scale(Button_image, (300, 100))
+    back_button = Button(Button_image, on_click=lambda: manager.change_scene('town'), x=1750, y=1010, is_center=True)
 
 # 씬이 불러와진 상태일 때, 이벤트가 작동할 시 실행되는 메소드입니다.
 def handle_event(event):
@@ -40,6 +45,7 @@ def draw(screen):
     screen.blit(quest_1, (500, 100))
     screen.blit(quest_2, (700, 100))
     screen.blit(quest_3, (1000, 100))
+    back_button.draw(screen)
 
 # 다른 씬으로 넘어갈 때 실행되는 메소드입니다.
 def cleanup():
